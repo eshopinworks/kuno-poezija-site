@@ -78,29 +78,29 @@ export function VoucherSection() {
         <Reveal delay={80} className="mt-10">
           <div className="rounded-2xl border border-border/80 bg-background p-6 sm:p-10 shadow-sm">
             {/* Toggle Tabs */}
-            <div className="flex rounded-xl border border-border/80 bg-card p-1.5 gap-1.5">
+            <div className="flex rounded-full border border-border/80 bg-card p-1.5 gap-1 max-w-xl mx-auto">
               <button
                 type="button"
                 onClick={() => { setTab("booking"); setSubmitted(false); }}
-                className={`flex-1 py-3 text-xs tracking-[0.12em] uppercase font-medium transition-all flex items-center justify-center gap-2 rounded-lg ${
+                className={`flex-1 py-3 px-4 text-xs tracking-[0.08em] uppercase font-semibold transition-all flex items-center justify-center gap-2 rounded-full whitespace-nowrap ${
                   tab === "booking"
-                    ? "bg-foreground text-background shadow-xs font-semibold"
+                    ? "bg-foreground text-background shadow-xs"
                     : "text-foreground/70 hover:text-foreground hover:bg-background/50"
                 }`}
               >
-                <CalendarCheck className="size-4" />
+                <CalendarCheck className="size-4 shrink-0" />
                 Tiesioginė registracija
               </button>
               <button
                 type="button"
                 onClick={() => { setTab("voucher"); setSubmitted(false); }}
-                className={`flex-1 py-3 text-xs tracking-[0.12em] uppercase font-medium transition-all flex items-center justify-center gap-2 rounded-lg ${
+                className={`flex-1 py-3 px-4 text-xs tracking-[0.08em] uppercase font-semibold transition-all flex items-center justify-center gap-2 rounded-full whitespace-nowrap ${
                   tab === "voucher"
-                    ? "bg-foreground text-background shadow-xs font-semibold"
+                    ? "bg-foreground text-background shadow-xs"
                     : "text-foreground/70 hover:text-foreground hover:bg-background/50"
                 }`}
               >
-                <Gift className="size-4" />
+                <Gift className="size-4 shrink-0" />
                 Dovanų kuponas
               </button>
             </div>
@@ -137,7 +137,7 @@ export function VoucherSection() {
                     setEmail("");
                     setMessage("");
                   }}
-                  className="mt-8 inline-block rounded-lg border border-foreground/30 px-6 py-2.5 text-xs tracking-[0.12em] uppercase hover:bg-card transition-colors font-medium"
+                  className="mt-8 inline-block rounded-full border border-foreground/30 px-6 py-2.5 text-xs tracking-[0.12em] uppercase hover:bg-card transition-colors font-medium whitespace-nowrap"
                 >
                   Pateikti kitą užklausą
                 </button>
@@ -314,7 +314,7 @@ export function VoucherSection() {
                   <button
                     type="submit"
                     disabled={loading}
-                    className="w-full sm:w-auto rounded-lg bg-foreground text-background px-8 py-4 text-xs font-semibold tracking-[0.15em] uppercase hover:bg-foreground/90 transition-all disabled:opacity-50 flex items-center justify-center gap-2 shadow-xs"
+                    className="w-full sm:w-auto rounded-full bg-foreground text-background px-9 py-4 text-xs font-semibold tracking-[0.12em] uppercase hover:bg-foreground/90 transition-all disabled:opacity-50 flex items-center justify-center gap-2 shadow-xs whitespace-nowrap"
                   >
                     {loading ? (
                       "Siunčiama..."
@@ -325,7 +325,7 @@ export function VoucherSection() {
                       </>
                     )}
                   </button>
-                  <p className="text-xs text-foreground/60 text-center sm:text-right flex items-center gap-1.5">
+                  <p className="text-xs text-foreground/60 text-center sm:text-right flex items-center gap-1.5 whitespace-nowrap">
                     <ShieldCheck className="size-3.5 text-accent" />
                     Tiesioginis susitarimas · Be papildomų mokesčių
                   </p>
@@ -334,16 +334,16 @@ export function VoucherSection() {
             )}
 
             {/* Subtle Treatwell Alternative Note */}
-            <div className="mt-8 border-t border-border/60 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-foreground/70">
-              <span className="inline-flex items-center gap-2">
-                <span className="size-2 rounded-full bg-emerald-500 inline-block" />
+            <div className="mt-8 border-t border-border/60 pt-6 flex flex-wrap items-center justify-center sm:justify-between gap-y-2 gap-x-4 text-xs text-foreground/75">
+              <span className="inline-flex items-center gap-2 whitespace-nowrap">
+                <span className="size-2 rounded-full bg-emerald-500 inline-block shrink-0" />
                 Registraciją patvirtina meistrė Kristina Jasevičiūtė
               </span>
               <a
                 href="#treatwell"
-                className="hover:text-foreground underline underline-offset-4 text-accent transition-colors inline-flex items-center gap-1"
+                className="hover:text-foreground underline underline-offset-4 text-accent transition-colors inline-flex items-center gap-1 whitespace-nowrap font-medium"
               >
-                Pageidaujate naudoti Treatwell programėlę? Žiūrėti žemiau ↓
+                Rezervacija per Treatwell programėlę ↓
               </a>
             </div>
           </div>

@@ -39,23 +39,25 @@ export function Header() {
         <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-5 py-4 lg:px-8">
           <a
             href="#top"
-            className={`min-w-0 font-heading text-xs leading-tight tracking-[0.18em] uppercase transition-colors sm:text-sm ${
+            className={`flex items-baseline gap-2.5 transition-colors ${
               solid ? "text-foreground" : "text-white"
             }`}
           >
-            Masažų studija
-            <span className="block font-heading italic tracking-[0.06em] normal-case">
+            <span className="font-heading text-lg sm:text-xl tracking-tight font-medium whitespace-nowrap">
               Kūno poezija
+            </span>
+            <span className="text-[0.65rem] tracking-[0.16em] uppercase opacity-75 hidden sm:inline whitespace-nowrap">
+              Masažų studija
             </span>
           </a>
 
           <nav
-            className={`hidden items-center gap-7 text-[0.7rem] font-medium tracking-[0.15em] uppercase lg:flex ${
-              solid ? "text-foreground/75" : "text-white/85"
+            className={`hidden items-center gap-6 xl:gap-8 text-[0.7rem] font-medium tracking-[0.15em] uppercase lg:flex ${
+              solid ? "text-foreground/80" : "text-white/90"
             }`}
           >
             {NAV.map((item) => (
-              <a key={item.href} href={item.href} className="nav-link transition-colors hover:text-accent">
+              <a key={item.href} href={item.href} className="nav-link transition-colors hover:text-accent whitespace-nowrap">
                 {item.label}
               </a>
             ))}
@@ -64,7 +66,7 @@ export function Header() {
           <div className="flex items-center gap-2.5">
             <a
               href="#registracija"
-              className={`hidden items-center gap-1.5 border px-3.5 py-1.5 text-[0.68rem] tracking-[0.14em] uppercase sm:inline-flex transition-colors rounded-full font-medium ${
+              className={`hidden items-center gap-1.5 border px-4 py-2 text-xs tracking-[0.1em] uppercase sm:inline-flex transition-colors rounded-full font-medium whitespace-nowrap ${
                 solid
                   ? "border-border text-foreground hover:bg-secondary"
                   : "border-white/50 text-white hover:bg-white/10"
@@ -75,16 +77,16 @@ export function Header() {
             </a>
             <a
               href="#registracija"
-              className="hidden bg-foreground text-background px-4 py-2 text-[0.7rem] tracking-[0.14em] uppercase sm:inline-block hover:bg-foreground/90 transition-colors rounded-lg font-semibold"
+              className="hidden bg-foreground text-background px-5 py-2 text-xs tracking-[0.1em] uppercase sm:inline-block hover:bg-foreground/90 transition-colors rounded-full font-semibold whitespace-nowrap shadow-xs"
             >
-              Tiesioginė registracija
+              Registruotis
             </a>
             <button
               type="button"
               aria-label={open ? "Uždaryti meniu" : "Atidaryti meniu"}
               aria-expanded={open}
               onClick={() => setOpen((v) => !v)}
-              className={`relative inline-flex size-10 items-center justify-center border transition-colors rounded-lg lg:hidden ${
+              className={`relative inline-flex size-10 items-center justify-center border transition-colors rounded-full lg:hidden ${
                 solid ? "border-border text-foreground" : "border-white/50 text-white"
               }`}
             >
@@ -146,32 +148,32 @@ export function Header() {
             <a
               href="#registracija"
               onClick={() => setOpen(false)}
-              className="bg-foreground px-5 py-3.5 text-center text-[0.72rem] tracking-[0.15em] text-background uppercase font-semibold rounded-lg shadow-xs"
+              className="bg-foreground px-6 py-3.5 text-center text-xs tracking-[0.12em] text-background uppercase font-semibold rounded-full shadow-xs whitespace-nowrap"
             >
               Tiesioginė registracija
             </a>
             <a
               href="#registracija"
               onClick={() => setOpen(false)}
-              className="bg-accent px-5 py-3.5 text-center text-[0.72rem] tracking-[0.15em] text-accent-foreground uppercase font-semibold rounded-lg shadow-xs"
+              className="bg-accent px-6 py-3.5 text-center text-xs tracking-[0.12em] text-accent-foreground uppercase font-semibold rounded-full shadow-xs whitespace-nowrap"
             >
               Dovanų kuponai
             </a>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+            <div className="grid grid-cols-2 gap-2">
               <a
                 href={`tel:${STUDIO.phone}`}
                 onClick={() => setOpen(false)}
-                className="border border-border px-3 py-3.5 text-center text-[0.7rem] tracking-[0.12em] text-foreground uppercase flex items-center justify-center gap-2 rounded-lg"
+                className="border border-border px-3 py-3 text-center text-[0.72rem] tracking-[0.06em] text-foreground uppercase flex items-center justify-center gap-1.5 rounded-full whitespace-nowrap"
               >
-                <Phone className="size-3.5 shrink-0" />
+                <Phone className="size-3.5 shrink-0 text-accent" />
                 {STUDIO.phoneLabel}
               </a>
               <a
                 href={`tel:${STUDIO.phone2}`}
                 onClick={() => setOpen(false)}
-                className="border border-border px-3 py-3.5 text-center text-[0.7rem] tracking-[0.12em] text-foreground uppercase flex items-center justify-center gap-2 rounded-lg"
+                className="border border-border px-3 py-3 text-center text-[0.72rem] tracking-[0.06em] text-foreground uppercase flex items-center justify-center gap-1.5 rounded-full whitespace-nowrap"
               >
-                <Phone className="size-3.5 shrink-0" />
+                <Phone className="size-3.5 shrink-0 text-accent" />
                 {STUDIO.phone2Label}
               </a>
             </div>

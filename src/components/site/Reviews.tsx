@@ -41,19 +41,13 @@ export function Reviews() {
 
         <div className="mt-12 grid items-start gap-4 sm:gap-6 lg:grid-cols-5">
           <Reveal className="lg:col-span-3">
-            <figure className="relative overflow-hidden rounded-2xl border border-border/80 bg-card p-8 shadow-xs sm:p-10">
-              <span
-                aria-hidden
-                className="pointer-events-none absolute -top-10 right-4 font-heading text-[10rem] leading-none text-accent/10 select-none sm:text-[13rem]"
-              >
-                &rdquo;
-              </span>
-              <blockquote className="relative font-heading text-xl leading-snug text-foreground sm:text-2xl font-normal">
+            <figure className="relative overflow-hidden rounded-2xl border border-border/80 bg-card p-8 shadow-xs sm:p-10 flex flex-col justify-between h-full">
+              <blockquote className="font-heading text-xl leading-snug text-foreground sm:text-2xl font-normal">
                 "{featured?.text}"
               </blockquote>
-              <figcaption className="relative mt-6 flex items-center gap-3 border-t border-border/50 pt-4">
+              <figcaption className="mt-8 flex items-center gap-3 border-t border-border/50 pt-4">
                 <Avatar name={featured?.name ?? ""} />
-                <span className="text-xs tracking-[0.15em] text-foreground/80 uppercase font-semibold">
+                <span className="text-xs tracking-[0.15em] text-foreground/80 uppercase font-semibold whitespace-nowrap">
                   {featured?.name}
                 </span>
                 <Stars />
@@ -97,7 +91,7 @@ function SmallReview({
         </blockquote>
         <figcaption className="mt-5 flex items-center gap-3 border-t border-border/50 pt-4">
           <Avatar name={review.name} />
-          <span className="text-xs tracking-[0.12em] text-foreground/70 uppercase font-medium">
+          <span className="text-xs tracking-[0.12em] text-foreground/70 uppercase font-medium whitespace-nowrap">
             {review.name}
           </span>
           <Stars />

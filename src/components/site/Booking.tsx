@@ -30,7 +30,7 @@ export function Booking() {
                   href={STUDIO.bookingUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-2 rounded-lg border border-foreground/30 bg-card px-5 py-3 text-xs tracking-[0.12em] uppercase font-semibold text-foreground hover:bg-secondary transition-all shadow-2xs"
+                  className="inline-flex items-center justify-center gap-2 rounded-full border border-foreground/30 bg-card px-6 py-3 text-xs tracking-[0.12em] uppercase font-semibold text-foreground hover:bg-secondary transition-all shadow-2xs whitespace-nowrap"
                 >
                   Atverti Treatwell
                   <ExternalLink className="size-3.5" />
@@ -38,7 +38,7 @@ export function Booking() {
                 <button
                   type="button"
                   onClick={() => setShowEmbed(!showEmbed)}
-                  className="inline-flex items-center justify-center gap-1.5 rounded-lg border border-border/80 px-4 py-2.5 text-xs font-medium text-foreground/70 hover:text-foreground hover:bg-card transition-all"
+                  className="inline-flex items-center justify-center gap-1.5 rounded-full border border-border/80 px-5 py-2.5 text-xs font-medium text-foreground/70 hover:text-foreground hover:bg-card transition-all whitespace-nowrap"
                 >
                   <Calendar className="size-3.5" />
                   {showEmbed ? (

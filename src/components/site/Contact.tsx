@@ -71,14 +71,14 @@ export function Contact() {
                     <div className="mt-1 flex flex-wrap items-center gap-x-3 gap-y-1">
                       <a
                         href={`tel:${STUDIO.phone}`}
-                        className="text-base font-semibold text-foreground underline-offset-4 hover:underline"
+                        className="text-base font-semibold text-foreground underline-offset-4 hover:underline whitespace-nowrap"
                       >
                         {STUDIO.phoneLabel}
                       </a>
                       <span className="text-foreground/40 font-light">/</span>
                       <a
                         href={`tel:${STUDIO.phone2}`}
-                        className="text-base font-semibold text-foreground underline-offset-4 hover:underline"
+                        className="text-base font-semibold text-foreground underline-offset-4 hover:underline whitespace-nowrap"
                       >
                         {STUDIO.phone2Label}
                       </a>
@@ -96,7 +96,7 @@ export function Contact() {
                     </p>
                     <a
                       href={`mailto:${STUDIO.email}`}
-                      className="mt-1 block text-base text-foreground underline-offset-4 hover:underline"
+                      className="mt-1 block text-base text-foreground underline-offset-4 hover:underline whitespace-nowrap"
                     >
                       {STUDIO.email}
                     </a>
@@ -126,13 +126,13 @@ export function Contact() {
               <div className="mt-8 flex flex-wrap gap-3">
                 <a
                   href="#registracija"
-                  className="rounded-lg bg-foreground text-background px-6 py-3 text-xs tracking-[0.15em] uppercase font-semibold hover:bg-foreground/90 transition-colors shadow-xs"
+                  className="rounded-full bg-foreground text-background px-7 py-3 text-xs tracking-[0.15em] uppercase font-semibold hover:bg-foreground/90 transition-colors shadow-xs whitespace-nowrap"
                 >
                   Tiesioginė registracija
                 </a>
                 <a
                   href="#registracija"
-                  className="rounded-lg border border-foreground/30 px-6 py-3 text-xs tracking-[0.15em] text-foreground uppercase font-semibold hover:bg-secondary transition-colors"
+                  className="rounded-full border border-foreground/30 px-7 py-3 text-xs tracking-[0.15em] text-foreground uppercase font-semibold hover:bg-secondary transition-colors whitespace-nowrap"
                 >
                   Dovanų kuponai
                 </a>
