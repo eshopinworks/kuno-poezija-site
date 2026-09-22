@@ -127,12 +127,22 @@ export function Contact() {
               <div className="mt-8 flex flex-wrap gap-3">
                 <a
                   href="#registracija"
+                  onClick={() =>
+                    window.dispatchEvent(
+                      new CustomEvent("select-service", { detail: { tab: "booking" } })
+                    )
+                  }
                   className="rounded-full bg-foreground text-background px-7 py-3 text-xs tracking-[0.15em] uppercase font-semibold hover:bg-foreground/90 transition-colors shadow-xs whitespace-nowrap"
                 >
                   Tiesioginė registracija
                 </a>
                 <a
-                  href="#registracija"
+                  href="#kuponai"
+                  onClick={() =>
+                    window.dispatchEvent(
+                      new CustomEvent("select-service", { detail: { tab: "voucher" } })
+                    )
+                  }
                   className="rounded-full border border-foreground/30 px-7 py-3 text-xs tracking-[0.15em] text-foreground uppercase font-semibold hover:bg-secondary transition-colors whitespace-nowrap"
                 >
                   Dovanų kuponai

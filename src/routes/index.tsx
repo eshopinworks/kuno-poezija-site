@@ -80,12 +80,22 @@ function Index() {
           <div className="mt-8 flex flex-wrap items-center gap-3">
             <a
               href="#registracija"
+              onClick={() =>
+                window.dispatchEvent(
+                  new CustomEvent("select-service", { detail: { tab: "booking" } })
+                )
+              }
               className="rounded-full bg-accent px-7 py-3.5 text-xs tracking-[0.12em] text-accent-foreground uppercase font-semibold hover:bg-accent/90 transition-all shadow-sm whitespace-nowrap"
             >
               Tiesioginė registracija
             </a>
             <a
-              href="#registracija"
+              href="#kuponai"
+              onClick={() =>
+                window.dispatchEvent(
+                  new CustomEvent("select-service", { detail: { tab: "voucher" } })
+                )
+              }
               className="rounded-full border border-white/80 px-7 py-3.5 text-xs tracking-[0.12em] text-white uppercase font-semibold hover:bg-white/15 transition-all whitespace-nowrap"
             >
               Dovanų kuponai
@@ -174,12 +184,26 @@ function Index() {
                     <div className="flex items-center gap-2">
                       <a
                         href="#registracija"
+                        onClick={() =>
+                          window.dispatchEvent(
+                            new CustomEvent("select-service", {
+                              detail: { service: item.title, tab: "booking" },
+                            })
+                          )
+                        }
                         className="rounded-full bg-foreground text-background px-4 py-1.5 text-xs font-semibold hover:bg-foreground/90 transition-all whitespace-nowrap shadow-2xs"
                       >
                         Registruotis
                       </a>
                       <a
-                        href="#registracija"
+                        href="#kuponai"
+                        onClick={() =>
+                          window.dispatchEvent(
+                            new CustomEvent("select-service", {
+                              detail: { service: item.title, tab: "voucher" },
+                            })
+                          )
+                        }
                         className="rounded-full border border-border/80 bg-background px-4 py-1.5 text-xs font-medium text-foreground/80 hover:bg-secondary transition-all whitespace-nowrap"
                       >
                         Kuponas
@@ -264,12 +288,22 @@ function Index() {
               <div className="mt-8 flex flex-wrap gap-3">
                 <a
                   href="#registracija"
+                  onClick={() =>
+                    window.dispatchEvent(
+                      new CustomEvent("select-service", { detail: { tab: "booking" } })
+                    )
+                  }
                   className="rounded-full bg-foreground text-background px-8 py-3.5 text-xs tracking-[0.12em] uppercase font-semibold hover:bg-foreground/90 transition-all shadow-xs whitespace-nowrap"
                 >
                   Tiesioginė registracija
                 </a>
                 <a
-                  href="#registracija"
+                  href="#kuponai"
+                  onClick={() =>
+                    window.dispatchEvent(
+                      new CustomEvent("select-service", { detail: { tab: "voucher" } })
+                    )
+                  }
                   className="rounded-full border border-border/80 bg-background px-8 py-3.5 text-xs tracking-[0.12em] uppercase font-semibold text-foreground hover:bg-secondary transition-all whitespace-nowrap"
                 >
                   Užsakyti dovanų kuponą

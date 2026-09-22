@@ -65,7 +65,12 @@ export function Header() {
 
           <div className="flex items-center gap-2.5">
             <a
-              href="#registracija"
+              href="#kuponai"
+              onClick={() =>
+                window.dispatchEvent(
+                  new CustomEvent("select-service", { detail: { tab: "voucher" } })
+                )
+              }
               className={`hidden items-center gap-1.5 border px-4 py-2 text-xs tracking-[0.1em] uppercase sm:inline-flex transition-colors rounded-full font-medium whitespace-nowrap ${
                 solid
                   ? "border-border text-foreground hover:bg-secondary"
@@ -77,6 +82,11 @@ export function Header() {
             </a>
             <a
               href="#registracija"
+              onClick={() =>
+                window.dispatchEvent(
+                  new CustomEvent("select-service", { detail: { tab: "booking" } })
+                )
+              }
               className="hidden bg-foreground text-background px-5 py-2 text-xs tracking-[0.1em] uppercase sm:inline-block hover:bg-foreground/90 transition-colors rounded-full font-semibold whitespace-nowrap shadow-xs"
             >
               Registruotis
@@ -147,14 +157,24 @@ export function Header() {
           <div className="mt-6 flex flex-col gap-3">
             <a
               href="#registracija"
-              onClick={() => setOpen(false)}
+              onClick={() => {
+                setOpen(false);
+                window.dispatchEvent(
+                  new CustomEvent("select-service", { detail: { tab: "booking" } })
+                );
+              }}
               className="bg-foreground px-6 py-3.5 text-center text-xs tracking-[0.12em] text-background uppercase font-semibold rounded-full shadow-xs whitespace-nowrap"
             >
               Tiesioginė registracija
             </a>
             <a
-              href="#registracija"
-              onClick={() => setOpen(false)}
+              href="#kuponai"
+              onClick={() => {
+                setOpen(false);
+                window.dispatchEvent(
+                  new CustomEvent("select-service", { detail: { tab: "voucher" } })
+                );
+              }}
               className="bg-accent px-6 py-3.5 text-center text-xs tracking-[0.12em] text-accent-foreground uppercase font-semibold rounded-full shadow-xs whitespace-nowrap"
             >
               Dovanų kuponai
