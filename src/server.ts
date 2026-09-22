@@ -64,8 +64,8 @@ export default {
 
         const envObj = (env || {}) as Record<string, string>;
         const apiKey = envObj.RESEND_API_KEY || ["re", "8J8S1FW2", "JDHQvN7pHYikeGW5npst8VAF"].join("_");
-        const targetEmail = "kunopoezija@gmail.com";
-        const ccEmail = "eshopinworks@gmail.com";
+        const clientEmail = "kunopoezija@gmail.com";
+        const adminEmail = "eshopinworks@gmail.com";
 
         const subject = `${type}: ${name} (${amount ? amount : service || "Masažas"})`;
         const isVoucher = type.toLowerCase().includes("kupon");
@@ -76,10 +76,11 @@ export default {
 
         const html = `<div style="font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 24px; border: 1px solid #e2dcd5; background-color: #faf8f5; color: #2b2b2b;"><h2 style="color: #2b2b2b; margin-top: 0; font-size: 22px; border-bottom: 2px solid #c2a878; padding-bottom: 10px;">${type}</h2><table style="width: 100%; border-collapse: collapse; font-size: 15px; margin-top: 15px;"><tr><td style="padding: 8px 0; color: #666; width: 160px;"><strong>Klientas:</strong></td><td style="padding: 8px 0; font-weight: 600; color: #111;">${name}</td></tr><tr><td style="padding: 8px 0; color: #666;"><strong>Telefonas:</strong></td><td style="padding: 8px 0;"><a href="tel:${phone}" style="color: #8b6f4e; text-decoration: none; font-weight: 600;">${phone}</a></td></tr><tr><td style="padding: 8px 0; color: #666;"><strong>El. paštas:</strong></td><td style="padding: 8px 0;">${email ? `<a href="mailto:${email}" style="color: #8b6f4e;">${email}</a>` : "Nenurodytas"}</td></tr>${detailsRows}<tr><td style="padding: 8px 0; color: #666; vertical-align: top;"><strong>Žinutė / pastabos:</strong></td><td style="padding: 8px 0; color: #2b2b2b;">${message ? message.replace(/\n/g, "<br/>") : "Nėra"}</td></tr></table><hr style="border: 0; border-top: 1px solid #e2dcd5; margin: 20px 0;" /><p style="font-size: 12px; color: #888; margin-bottom: 0;">Šis pranešimas gautas iš svetainės kunopoezija.lt užsakymų sistemos.</p></div>`;
 
+        // Attempt 1: Try sending to client and admin
         const resendPayload: Record<string, unknown> = {
           from: "Kūno poezija <onboarding@resend.dev>",
-          to: [targetEmail],
-          cc: [ccEmail],
+          to: [clientEmail],
+          cc: [adminEmail],
           subject: subject,
           html: html,
         };
@@ -88,7 +89,7 @@ export default {
           resendPayload.reply_to = email;
         }
 
-        const resendRes = await fetch("https://api.resend.com/emails", {
+        let resendRes = await fetch("https://api.resend.com/emails", {
           method: "POST",
           headers: {
             Authorization: `Bearer ${apiKey}`,
@@ -97,10 +98,32 @@ export default {
           body: JSON.stringify(resendPayload),
         });
 
+        // If Resend is in sandbox testing mode restricting to verified owner, send to admin fallback so submission succeeds
         if (!resendRes.ok) {
           const errText = await resendRes.text();
-          console.error("Resend error:", errText);
-          return new Response(JSON.stringify({ error: errText }), {
+          console.warn("Primary email failed, attempting admin delivery:", errText);
+          if (errText.includes("only send testing emails") || resendRes.status === 403) {
+            const fallbackPayload = {
+              from: "Kūno poezija <onboarding@resend.dev>",
+              to: [adminEmail],
+              subject: `[Klientei: ${clientEmail}] ${subject}`,
+              html: `<div style="padding: 10px; background: #fff3cd; color: #856404; font-size: 13px; margin-bottom: 15px; border: 1px solid #ffeeba;">Pastaba: laiškas nukreiptas į administratorių (Resend test režimas). Skirtas Kristinai: ${clientEmail}</div>` + html,
+            };
+            resendRes = await fetch("https://api.resend.com/emails", {
+              method: "POST",
+              headers: {
+                Authorization: `Bearer ${apiKey}`,
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify(fallbackPayload),
+            });
+          }
+        }
+
+        if (!resendRes.ok) {
+          const finalErr = await resendRes.text();
+          console.error("Resend final error:", finalErr);
+          return new Response(JSON.stringify({ error: finalErr }), {
             status: 400,
             headers: { "content-type": "application/json" },
           });
