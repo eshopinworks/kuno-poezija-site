@@ -20,6 +20,9 @@ export const STUDIO = {
   address: "H. Manto g. 36A (2 a.), Klaipėda, 91133",
   phone: "+37062180014",
   phoneLabel: "+370 621 80014",
+  phone2: "+37067761108",
+  phone2Label: "+370 677 61108",
+  specialistPhoto: "/kristina-profile.jpg",
   email: "kunopoezija@gmail.com",
   facebookUrl: "https://www.facebook.com/share/1MqSgsijda/",
   bookingUrl: "https://book.treatwell.lt/salonas/masazu-studija-kuno-poezija/",
@@ -71,7 +74,7 @@ export const TREATMENTS: Treatment[] = [
   },
   {
     id: "sportinis",
-    title: "Sportinis masažas (Restartas)",
+    title: "Sportinis masažas",
     duration: "60-90 min.",
     price: "nuo 40 €",
     forWhom: "Aktyviai sportuojantiems ir intensyvų fizinį krūvį patiriantiems žmonėms, raumenų paruošimui bei greitesniam atsistatymui.",
@@ -79,7 +82,7 @@ export const TREATMENTS: Treatment[] = [
   },
   {
     id: "giluminis",
-    title: "Giluminis masažas (Kūno balansas)",
+    title: "Giluminis masažas",
     duration: "60-90 min.",
     price: "nuo 45 €",
     forWhom: "Skirtas pasiekti gilesnius raumenų bei fascijų sluoksnius, šalinti ilgalaikį sustingimą ir atstatyti taisyklingą kūno balansą.",
@@ -95,7 +98,7 @@ export const TREATMENTS: Treatment[] = [
   },
   {
     id: "limfodrenazinis",
-    title: "Limfodrenažinis viso kūno masažas",
+    title: "Limfodrenažinis masažas",
     duration: "60-80 min.",
     price: "nuo 40 €",
     forWhom: "Skysčių sąstoviui mažinti, toksinų šalinimui, esant kojų sunkumui ar bendram kūno patinimui.",
@@ -103,7 +106,7 @@ export const TREATMENTS: Treatment[] = [
   },
   {
     id: "havajietiskas",
-    title: "Havajietiškas masažas (Lomi Lomi Nui)",
+    title: "Havajietiškas masažas (Lomi Lomi)",
     duration: "75-90 min.",
     price: "nuo 50 €",
     forWhom: "Giliai protinei bei emocinei ramybei, harmonijai ir streso paleidimui per tolygius, banguojančius judesius dilbiais.",
@@ -111,7 +114,7 @@ export const TREATMENTS: Treatment[] = [
   },
   {
     id: "veido",
-    title: "Veido masažai (Žydinti lelija)",
+    title: "Veido masažai",
     duration: "45-60 min.",
     price: "nuo 30 €",
     forWhom: "Veido ovalo stangrinimui, mimikos raumenų atpalaidavimui, odos skaistumui ir švytėjimui.",

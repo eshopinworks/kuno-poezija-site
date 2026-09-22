@@ -157,14 +157,24 @@ export function Header() {
             >
               Rezervuoti vizitą
             </a>
-            <a
-              href={`tel:${STUDIO.phone}`}
-              onClick={() => setOpen(false)}
-              className="border border-border px-5 py-3.5 text-center text-[0.72rem] tracking-[0.15em] text-foreground uppercase flex items-center justify-center gap-2"
-            >
-              <Phone className="size-4" />
-              {STUDIO.phoneLabel}
-            </a>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+              <a
+                href={`tel:${STUDIO.phone}`}
+                onClick={() => setOpen(false)}
+                className="border border-border px-3 py-3.5 text-center text-[0.7rem] tracking-[0.12em] text-foreground uppercase flex items-center justify-center gap-2"
+              >
+                <Phone className="size-3.5 shrink-0" />
+                {STUDIO.phoneLabel}
+              </a>
+              <a
+                href={`tel:${STUDIO.phone2}`}
+                onClick={() => setOpen(false)}
+                className="border border-border px-3 py-3.5 text-center text-[0.7rem] tracking-[0.12em] text-foreground uppercase flex items-center justify-center gap-2"
+              >
+                <Phone className="size-3.5 shrink-0" />
+                {STUDIO.phone2Label}
+              </a>
+            </div>
           </div>
         </div>
       </div>

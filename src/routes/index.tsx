@@ -207,24 +207,25 @@ function Index() {
             <Reveal delay={80}>
               <div className="mt-6 space-y-4 text-base leading-relaxed text-foreground/85">
                 <p className="font-serif text-lg italic text-foreground/90 border-l-2 border-accent pl-4">
-                  „Mano tikslas yra ne tiesiog atlikti procedūrą pagal standartinį protokolą, o pajusti žmogaus kūną,
-                  parinkti darbą pagal esamą būklę ir padėti atgauti prarastą pusiausvyrą.“
+                  „Mano tikslas - ne tiesiog atlikti procedūrą ar standartinį masažą, o pajusti žmogaus kūną,
+                  įsiklausyti į esamą būklę ir parinkti individualų prisilietimą, kuris atkuria pusiausvyrą.“
                 </p>
                 <p>
-                  Masažus atlieka patyrusi specialistė <strong>Kristina Jasevičiūtė</strong>. Nuolat gilinuosi į žmogaus
-                  anatomiją, fascijas bei kūno biomechaniką, todėl kiekvienas seansas prasideda nuo jūsų savijautos išklausymo.
+                  Masažus atlieka patyrusi meistrė <strong>Kristina Jasevičiūtė</strong>. Esu sukaupusi gilią įvairių
+                  masažo technikų patirtį: nuo tonizuojančio sportinio bei giliojo audinių masažo iki švelnaus
+                  limfodrenažo, terapinio raumenų atpalaidavimo ir meditatyvaus havajietiško Lomi Lomi Nui.
                 </p>
                 <p>
-                  Valdau įvairias masažo technikas: nuo intensyvaus sportinio ir giliojo audinių darbo iki švelnaus
-                  limfodrenažo bei giliai atpalaiduojančio havajietiško Lomi Lomi Nui. Tai leidžia pritaikyti sprendimą
-                  būtent tam, ko jūsų kūnui labiausiai reikia šią dieną.
+                  Nuolat mokausi ir gilinuosi į žmogaus anatomiją, raumenų grandines bei kūno biomechaniką.
+                  Tikiu, kad kiekvienas kūnas pasakoja savo istoriją, todėl seansas visada prasideda nuo jūsų
+                  savijautos išklausymo ir technikos pritaikymo būtent tai dienai.
                 </p>
               </div>
 
               {/* Guiding Principles */}
               <div className="mt-8 border-t border-border/60 pt-6">
                 <p className="text-xs tracking-[0.15em] text-foreground/60 uppercase font-semibold mb-4">
-                  Meistrės vertybės ir darbo principai:
+                  Veiklos filosofija ir darbo principai:
                 </p>
                 <div className="grid sm:grid-cols-2 gap-3">
                   {PRINCIPLES.map((p) => (
@@ -261,12 +262,12 @@ function Index() {
               <div className="border border-border/80 p-2 bg-background shadow-xs">
                 <div className="relative overflow-hidden aspect-[3/4]">
                   <SmartImage
-                    src={PHOTOS[1]!}
-                    fallback={FALLBACK_PHOTOS[1]!}
-                    alt="Masažų meistrė Kristina atlieka procedūrą"
-                    className="size-full object-cover grayscale-[15%] contrast-[1.05]"
+                    src={STUDIO.specialistPhoto}
+                    fallback={PHOTOS[1]!}
+                    alt="Masažų specialistė Kristina Jasevičiūtė"
+                    className="size-full object-cover grayscale-[10%] contrast-[1.03]"
                   />
-                  <div className="absolute bottom-0 inset-x-0 bg-linear-to-t from-black/80 via-black/40 to-transparent p-6 text-white">
+                  <div className="absolute bottom-0 inset-x-0 bg-linear-to-t from-black/85 via-black/45 to-transparent p-6 text-white">
                     <p className="text-xs tracking-[0.15em] uppercase text-accent font-semibold">Specialistė</p>
                     <p className="font-heading text-xl font-medium">Kristina Jasevičiūtė</p>
                     <p className="text-xs text-white/80 mt-1">Kūno terapijos ir masažų praktika Klaipėdoje</p>

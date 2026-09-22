@@ -1,4 +1,4 @@
-import { Clock, MapPin, Phone, Mail } from "lucide-react";
+import { Clock, MapPin, Phone, Mail, Globe } from "lucide-react";
 import { Reveal } from "./Reveal";
 import { STUDIO } from "./site-data";
 import { SectionHeading } from "./SectionHeading";
@@ -68,12 +68,21 @@ export function Contact() {
                     <p className="text-[0.7rem] tracking-[0.15em] text-foreground/60 uppercase">
                       Telefonas
                     </p>
-                    <a
-                      href={`tel:${STUDIO.phone}`}
-                      className="mt-1 block text-base font-semibold text-foreground underline-offset-4 hover:underline"
-                    >
-                      {STUDIO.phoneLabel}
-                    </a>
+                    <div className="mt-1 flex flex-wrap items-center gap-x-3 gap-y-1">
+                      <a
+                        href={`tel:${STUDIO.phone}`}
+                        className="text-base font-semibold text-foreground underline-offset-4 hover:underline"
+                      >
+                        {STUDIO.phoneLabel}
+                      </a>
+                      <span className="text-foreground/40 font-light">/</span>
+                      <a
+                        href={`tel:${STUDIO.phone2}`}
+                        className="text-base font-semibold text-foreground underline-offset-4 hover:underline"
+                      >
+                        {STUDIO.phone2Label}
+                      </a>
+                    </div>
                   </div>
                 </li>
 
@@ -90,6 +99,25 @@ export function Contact() {
                       className="mt-1 block text-base text-foreground underline-offset-4 hover:underline"
                     >
                       {STUDIO.email}
+                    </a>
+                  </div>
+                </li>
+
+                <li className="flex gap-4 border-t border-border/50 pt-6">
+                  <span className="grid size-9 shrink-0 place-items-center border border-accent/40 bg-accent/10 text-accent">
+                    <Globe className="size-4" />
+                  </span>
+                  <div className="min-w-0">
+                    <p className="text-[0.7rem] tracking-[0.15em] text-foreground/60 uppercase">
+                      Socialiniai tinklai
+                    </p>
+                    <a
+                      href={STUDIO.facebookUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="mt-1 inline-block text-base font-medium text-foreground underline-offset-4 hover:underline"
+                    >
+                      Facebook: Masažų studija kūno poezija ↗
                     </a>
                   </div>
                 </li>
@@ -128,7 +156,7 @@ export function Contact() {
 
       <footer className="mx-auto mt-16 max-w-6xl border-t border-border/60 px-5 pt-8 text-xs text-foreground/60 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
         <span>© {new Date().getFullYear()} {STUDIO.name} · Kristina Jasevičiūtė</span>
-        <span>H. Manto g. 36A, Klaipėda · Tel. {STUDIO.phoneLabel}</span>
+        <span>H. Manto g. 36A, Klaipėda · Tel. {STUDIO.phoneLabel} / {STUDIO.phone2Label}</span>
       </footer>
     </section>
   );
