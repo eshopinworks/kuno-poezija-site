@@ -1,11 +1,11 @@
 import { useState } from "react";
-import { Gift, CalendarCheck, CheckCircle2, AlertCircle, Sparkles, Send } from "lucide-react";
+import { Gift, CalendarCheck, CheckCircle2, AlertCircle, Send, ExternalLink, ShieldCheck } from "lucide-react";
 import { STUDIO, TREATMENTS } from "./site-data";
 import { SectionHeading } from "./SectionHeading";
 import { Reveal } from "./Reveal";
 
 export function VoucherSection() {
-  const [tab, setTab] = useState<"voucher" | "booking">("voucher");
+  const [tab, setTab] = useState<"booking" | "voucher">("booking");
   const [selectedService, setSelectedService] = useState<string>(TREATMENTS[0].title);
   const [voucherAmount, setVoucherAmount] = useState<string>("50");
   const [customAmount, setCustomAmount] = useState<string>("");
@@ -60,69 +60,70 @@ export function VoucherSection() {
   };
 
   return (
-    <section id="kuponai" className="scroll-mt-24 bg-card py-20 sm:py-28 border-y border-border/60">
+    <section id="registracija" className="scroll-mt-24 bg-card py-20 sm:py-28 border-y border-border/60">
+      <span id="kuponai" className="sr-only" />
       <div className="mx-auto max-w-4xl px-5 lg:px-8">
         <SectionHeading
-          overline="Dovanos ir vizitai"
+          overline="Tiesioginis užsakymas"
           ornament="03"
           title={
             <>
-              Dovanų kuponai ir{" "}
-              <em className="font-heading italic text-accent">tiesioginė registracija</em>
+              Tiesioginė registracija ir{" "}
+              <em className="font-heading italic text-accent">dovanų kuponai</em>
             </>
           }
-          intro="Užsisakykite dovanų kuponą arba registruokitės tiesiogiai pas meistrę Kristiną be papildomų tarpininkų."
+          intro="Rezervuokitės laiką vizitui arba užsisakykite dovanų kuponą tiesiogiai pas meistrę Kristiną be jokių tarpininkų antkainių."
         />
 
         <Reveal delay={80} className="mt-10">
-          <div className="border border-border/80 bg-background p-6 sm:p-10 shadow-sm">
+          <div className="rounded-2xl border border-border/80 bg-background p-6 sm:p-10 shadow-sm">
             {/* Toggle Tabs */}
-            <div className="flex border border-border/80 bg-card p-1">
-              <button
-                type="button"
-                onClick={() => { setTab("voucher"); setSubmitted(false); }}
-                className={`flex-1 py-3 text-xs tracking-[0.12em] uppercase font-medium transition-all flex items-center justify-center gap-2 ${
-                  tab === "voucher"
-                    ? "bg-foreground text-background shadow-xs"
-                    : "text-foreground/70 hover:text-foreground"
-                }`}
-              >
-                <Gift className="size-4" />
-                Dovanų kuponas
-              </button>
+            <div className="flex rounded-xl border border-border/80 bg-card p-1.5 gap-1.5">
               <button
                 type="button"
                 onClick={() => { setTab("booking"); setSubmitted(false); }}
-                className={`flex-1 py-3 text-xs tracking-[0.12em] uppercase font-medium transition-all flex items-center justify-center gap-2 ${
+                className={`flex-1 py-3 text-xs tracking-[0.12em] uppercase font-medium transition-all flex items-center justify-center gap-2 rounded-lg ${
                   tab === "booking"
-                    ? "bg-foreground text-background shadow-xs"
-                    : "text-foreground/70 hover:text-foreground"
+                    ? "bg-foreground text-background shadow-xs font-semibold"
+                    : "text-foreground/70 hover:text-foreground hover:bg-background/50"
                 }`}
               >
                 <CalendarCheck className="size-4" />
                 Tiesioginė registracija
               </button>
+              <button
+                type="button"
+                onClick={() => { setTab("voucher"); setSubmitted(false); }}
+                className={`flex-1 py-3 text-xs tracking-[0.12em] uppercase font-medium transition-all flex items-center justify-center gap-2 rounded-lg ${
+                  tab === "voucher"
+                    ? "bg-foreground text-background shadow-xs font-semibold"
+                    : "text-foreground/70 hover:text-foreground hover:bg-background/50"
+                }`}
+              >
+                <Gift className="size-4" />
+                Dovanų kuponas
+              </button>
             </div>
 
             {submitted ? (
-              <div className="mt-8 border border-accent/40 bg-accent/10 p-8 text-center">
+              <div className="mt-8 rounded-xl border border-accent/40 bg-accent/10 p-8 text-center">
                 <CheckCircle2 className="mx-auto size-12 text-accent" />
-                <h3 className="mt-4 font-heading text-2xl text-foreground">
+                <h3 className="mt-4 font-heading text-2xl text-foreground font-medium">
                   Ačiū! Užklausa sėkmingai gauta
                 </h3>
                 <p className="mt-3 text-base text-foreground/80 max-w-lg mx-auto leading-relaxed">
-                  Meistrė Kristina netrukus peržiūrės Jūsų užsakymą ir susisieks nurodytu telefonu (arba el. paštu)
+                  Meistrė Kristina netrukus peržiūrės Jūsų užklausą ir susisieks nurodytu telefonu (arba el. paštu)
                   dėl vizito patvirtinimo arba elektroninio kupono išsiuntimo.
                 </p>
 
                 {tab === "voucher" && (
-                  <div className="mt-6 p-5 border border-border/80 bg-background text-left max-w-md mx-auto text-sm">
+                  <div className="mt-6 p-6 rounded-xl border border-border/80 bg-background text-left max-w-md mx-auto text-sm shadow-2xs">
                     <p className="font-semibold text-foreground tracking-wide uppercase text-xs">Mokėjimo rekvizitai kuponui:</p>
                     <p className="mt-2 text-foreground/80">Gavėjas: <strong>{STUDIO.bankDetails.recipient}</strong></p>
                     <p className="text-foreground/80">Bankas: <strong>{STUDIO.bankDetails.bank}</strong></p>
                     <p className="text-foreground/80">Sąskaita (IBAN): <strong className="font-mono text-foreground">{STUDIO.bankDetails.iban}</strong></p>
-                    <p className="mt-2 text-xs text-foreground/60 italic">
-                      Pavedimą galėsite atlikti gavę Kristinos patvirtinimą. Kuponas atsiunčiamas elektroniniu formatu.
+                    <p className="mt-3 text-xs text-foreground/60 italic border-t border-border/50 pt-2">
+                      Pavedimą atlikite tik suderinę detales su meistre. Kuponas parengiamas ir atsiunčiamas elektroniniu formatu.
                     </p>
                   </div>
                 )}
@@ -136,7 +137,7 @@ export function VoucherSection() {
                     setEmail("");
                     setMessage("");
                   }}
-                  className="mt-8 inline-block border border-foreground/30 px-6 py-2.5 text-xs tracking-[0.12em] uppercase hover:bg-card transition-colors"
+                  className="mt-8 inline-block rounded-lg border border-foreground/30 px-6 py-2.5 text-xs tracking-[0.12em] uppercase hover:bg-card transition-colors font-medium"
                 >
                   Pateikti kitą užklausą
                 </button>
@@ -144,67 +145,13 @@ export function VoucherSection() {
             ) : (
               <form onSubmit={handleSubmit} className="mt-8 space-y-6">
                 {error && (
-                  <div className="flex items-start gap-3 border border-destructive/40 bg-destructive/10 p-4 text-sm text-destructive">
+                  <div className="flex items-start gap-3 rounded-lg border border-destructive/40 bg-destructive/10 p-4 text-sm text-destructive">
                     <AlertCircle className="size-5 shrink-0 mt-0.5" />
                     <p>{error}</p>
                   </div>
                 )}
 
-                {tab === "voucher" ? (
-                  <>
-                    <div className="space-y-4">
-                      <label className="block text-xs font-semibold tracking-[0.12em] text-foreground/70 uppercase">
-                        Kupono pasirinkimas:
-                      </label>
-                      <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
-                        {["35", "50", "70", "100"].map((sum) => (
-                          <button
-                            key={sum}
-                            type="button"
-                            onClick={() => { setVoucherAmount(sum); }}
-                            className={`py-3 text-center border text-sm font-semibold transition-all ${
-                              voucherAmount === sum
-                                ? "border-foreground bg-foreground text-background"
-                                : "border-border/80 bg-card text-foreground hover:border-foreground/40"
-                            }`}
-                          >
-                            {sum} €
-                          </button>
-                        ))}
-                      </div>
-
-                      <div className="pt-2">
-                        <label className="block text-xs font-semibold tracking-[0.12em] text-foreground/70 uppercase mb-2">
-                          Arba konkreti paslauga:
-                        </label>
-                        <select
-                          value={selectedService}
-                          onChange={(e) => setSelectedService(e.target.value)}
-                          className="w-full border border-border/80 bg-card px-4 py-3 text-base text-foreground focus:outline-none focus:border-foreground transition-colors"
-                        >
-                          {TREATMENTS.map((t) => (
-                            <option key={t.id} value={t.title}>
-                              {t.title} ({t.price})
-                            </option>
-                          ))}
-                        </select>
-                      </div>
-
-                      <div>
-                        <label className="block text-xs font-semibold tracking-[0.12em] text-foreground/70 uppercase mb-2">
-                          Kam bus skirtas kuponas (gavėjo vardas):
-                        </label>
-                        <input
-                          type="text"
-                          value={recipientName}
-                          onChange={(e) => setRecipientName(e.target.value)}
-                          placeholder="Pvz.: Laura"
-                          className="w-full border border-border/80 bg-card px-4 py-3 text-base text-foreground focus:outline-none focus:border-foreground transition-colors"
-                        />
-                      </div>
-                    </div>
-                  </>
-                ) : (
+                {tab === "booking" ? (
                   <>
                     <div>
                       <label className="block text-xs font-semibold tracking-[0.12em] text-foreground/70 uppercase mb-2">
@@ -213,7 +160,7 @@ export function VoucherSection() {
                       <select
                         value={selectedService}
                         onChange={(e) => setSelectedService(e.target.value)}
-                        className="w-full border border-border/80 bg-card px-4 py-3 text-base text-foreground focus:outline-none focus:border-foreground transition-colors"
+                        className="w-full rounded-lg border border-border/80 bg-card px-4 py-3 text-base text-foreground focus:outline-none focus:border-foreground focus:ring-1 focus:ring-accent/40 transition-colors"
                       >
                         {TREATMENTS.map((t) => (
                           <option key={t.id} value={t.title}>
@@ -232,7 +179,7 @@ export function VoucherSection() {
                           type="date"
                           value={preferredDate}
                           onChange={(e) => setPreferredDate(e.target.value)}
-                          className="w-full border border-border/80 bg-card px-4 py-3 text-base text-foreground focus:outline-none focus:border-foreground transition-colors"
+                          className="w-full rounded-lg border border-border/80 bg-card px-4 py-3 text-base text-foreground focus:outline-none focus:border-foreground focus:ring-1 focus:ring-accent/40 transition-colors"
                         />
                       </div>
                       <div>
@@ -243,8 +190,62 @@ export function VoucherSection() {
                           type="text"
                           value={preferredTime}
                           onChange={(e) => setPreferredTime(e.target.value)}
-                          placeholder="Pvz.: 14:00 arba vakare"
-                          className="w-full border border-border/80 bg-card px-4 py-3 text-base text-foreground focus:outline-none focus:border-foreground transition-colors"
+                          placeholder="Pvz.: 14:00 arba vakare po darbo"
+                          className="w-full rounded-lg border border-border/80 bg-card px-4 py-3 text-base text-foreground focus:outline-none focus:border-foreground focus:ring-1 focus:ring-accent/40 transition-colors"
+                        />
+                      </div>
+                    </div>
+                  </>
+                ) : (
+                  <>
+                    <div className="space-y-4">
+                      <label className="block text-xs font-semibold tracking-[0.12em] text-foreground/70 uppercase">
+                        Pasirinkite dovanų kupono sumą:
+                      </label>
+                      <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
+                        {["35", "50", "70", "100"].map((sum) => (
+                          <button
+                            key={sum}
+                            type="button"
+                            onClick={() => { setVoucherAmount(sum); }}
+                            className={`py-2.5 px-4 text-center rounded-full text-sm font-semibold transition-all border ${
+                              voucherAmount === sum
+                                ? "border-foreground bg-foreground text-background shadow-xs"
+                                : "border-border/80 bg-card text-foreground hover:border-foreground/40"
+                            }`}
+                          >
+                            {sum} €
+                          </button>
+                        ))}
+                      </div>
+
+                      <div className="pt-2">
+                        <label className="block text-xs font-semibold tracking-[0.12em] text-foreground/70 uppercase mb-2">
+                          Arba konkreti paslauga:
+                        </label>
+                        <select
+                          value={selectedService}
+                          onChange={(e) => setSelectedService(e.target.value)}
+                          className="w-full rounded-lg border border-border/80 bg-card px-4 py-3 text-base text-foreground focus:outline-none focus:border-foreground focus:ring-1 focus:ring-accent/40 transition-colors"
+                        >
+                          {TREATMENTS.map((t) => (
+                            <option key={t.id} value={t.title}>
+                              {t.title} ({t.price})
+                            </option>
+                          ))}
+                        </select>
+                      </div>
+
+                      <div>
+                        <label className="block text-xs font-semibold tracking-[0.12em] text-foreground/70 uppercase mb-2">
+                          Kam bus skirtas kuponas (gavėjo vardas):
+                        </label>
+                        <input
+                          type="text"
+                          value={recipientName}
+                          onChange={(e) => setRecipientName(e.target.value)}
+                          placeholder="Pvz.: Laura"
+                          className="w-full rounded-lg border border-border/80 bg-card px-4 py-3 text-base text-foreground focus:outline-none focus:border-foreground focus:ring-1 focus:ring-accent/40 transition-colors"
                         />
                       </div>
                     </div>
@@ -264,7 +265,7 @@ export function VoucherSection() {
                         value={name}
                         onChange={(e) => setName(e.target.value)}
                         placeholder="Vardas Pavardė"
-                        className="w-full border border-border/80 bg-card px-4 py-3 text-base text-foreground focus:outline-none focus:border-foreground transition-colors"
+                        className="w-full rounded-lg border border-border/80 bg-card px-4 py-3 text-base text-foreground focus:outline-none focus:border-foreground focus:ring-1 focus:ring-accent/40 transition-colors"
                       />
                     </div>
                     <div>
@@ -277,7 +278,7 @@ export function VoucherSection() {
                         value={phone}
                         onChange={(e) => setPhone(e.target.value)}
                         placeholder="+370 600 00000"
-                        className="w-full border border-border/80 bg-card px-4 py-3 text-base text-foreground focus:outline-none focus:border-foreground transition-colors"
+                        className="w-full rounded-lg border border-border/80 bg-card px-4 py-3 text-base text-foreground focus:outline-none focus:border-foreground focus:ring-1 focus:ring-accent/40 transition-colors"
                       />
                     </div>
                   </div>
@@ -291,7 +292,7 @@ export function VoucherSection() {
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                       placeholder="vardas@pavyzdys.lt"
-                      className="w-full border border-border/80 bg-card px-4 py-3 text-base text-foreground focus:outline-none focus:border-foreground transition-colors"
+                      className="w-full rounded-lg border border-border/80 bg-card px-4 py-3 text-base text-foreground focus:outline-none focus:border-foreground focus:ring-1 focus:ring-accent/40 transition-colors"
                     />
                   </div>
 
@@ -303,8 +304,8 @@ export function VoucherSection() {
                       rows={3}
                       value={message}
                       onChange={(e) => setMessage(e.target.value)}
-                      placeholder="Papildomi pageidavimai ar informacija meistrei..."
-                      className="w-full border border-border/80 bg-card px-4 py-3 text-base text-foreground focus:outline-none focus:border-foreground transition-colors"
+                      placeholder="Papildomi pageidavimai, informacija apie kūno įtampas meistrei..."
+                      className="w-full rounded-lg border border-border/80 bg-card px-4 py-3 text-base text-foreground focus:outline-none focus:border-foreground focus:ring-1 focus:ring-accent/40 transition-colors"
                     />
                   </div>
                 </div>
@@ -313,23 +314,38 @@ export function VoucherSection() {
                   <button
                     type="submit"
                     disabled={loading}
-                    className="w-full sm:w-auto bg-foreground text-background px-8 py-4 text-xs font-semibold tracking-[0.15em] uppercase hover:bg-foreground/90 transition-all disabled:opacity-50 flex items-center justify-center gap-2"
+                    className="w-full sm:w-auto rounded-lg bg-foreground text-background px-8 py-4 text-xs font-semibold tracking-[0.15em] uppercase hover:bg-foreground/90 transition-all disabled:opacity-50 flex items-center justify-center gap-2 shadow-xs"
                   >
                     {loading ? (
                       "Siunčiama..."
                     ) : (
                       <>
                         <Send className="size-4" />
-                        {tab === "voucher" ? "Užsakyti dovanų kuponą" : "Pateikti registracijos užklausą"}
+                        {tab === "booking" ? "Pateikti tiesioginę registraciją" : "Užsakyti dovanų kuponą"}
                       </>
                     )}
                   </button>
-                  <p className="text-xs text-foreground/60 text-center sm:text-right">
+                  <p className="text-xs text-foreground/60 text-center sm:text-right flex items-center gap-1.5">
+                    <ShieldCheck className="size-3.5 text-accent" />
                     Tiesioginis susitarimas · Be papildomų mokesčių
                   </p>
                 </div>
               </form>
             )}
+
+            {/* Subtle Treatwell Alternative Note */}
+            <div className="mt-8 border-t border-border/60 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-foreground/70">
+              <span className="inline-flex items-center gap-2">
+                <span className="size-2 rounded-full bg-emerald-500 inline-block" />
+                Registraciją patvirtina meistrė Kristina Jasevičiūtė
+              </span>
+              <a
+                href="#treatwell"
+                className="hover:text-foreground underline underline-offset-4 text-accent transition-colors inline-flex items-center gap-1"
+              >
+                Pageidaujate naudoti Treatwell programėlę? Žiūrėti žemiau ↓
+              </a>
+            </div>
           </div>
         </Reveal>
       </div>

@@ -46,7 +46,7 @@ export function Gallery() {
                 key={src}
                 type="button"
                 onClick={() => setActive(i)}
-                className={`group relative overflow-hidden border border-border/80 bg-secondary shadow-2xs ${tileClass(i, total)}`}
+                className={`group relative overflow-hidden rounded-xl border border-border/80 bg-secondary shadow-2xs ${tileClass(i, total)}`}
                 aria-label={`Atidaryti nuotrauką: ${ALTS[i] ?? "studijos nuotrauka"}`}
               >
                 <SmartImage
@@ -63,14 +63,14 @@ export function Gallery() {
       </div>
 
       <Dialog open={active !== null} onOpenChange={() => setActive(null)}>
-        <DialogContent className="max-w-3xl overflow-hidden border border-border/80 bg-background p-2 shadow-lg">
+        <DialogContent className="max-w-3xl overflow-hidden rounded-2xl border border-border/80 bg-background p-3 shadow-xl">
           <DialogTitle className="sr-only">Nuotrauka</DialogTitle>
           {active !== null && (
             <SmartImage
               src={PHOTOS[active]!}
               fallback={FALLBACK_PHOTOS[active] ?? FALLBACK_PHOTOS[0]!}
               alt={ALTS[active] ?? "Studijos nuotrauka"}
-              className="w-full object-contain"
+              className="w-full rounded-xl object-contain"
             />
           )}
         </DialogContent>

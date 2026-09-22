@@ -79,26 +79,26 @@ function Index() {
 
           <div className="mt-8 flex flex-wrap items-center gap-3">
             <a
-              href="#paslaugos"
-              className="bg-accent px-7 py-3.5 text-xs tracking-[0.15em] text-accent-foreground uppercase font-semibold hover:bg-accent/90 transition-all"
+              href="#registracija"
+              className="rounded-lg bg-accent px-7 py-3.5 text-xs tracking-[0.15em] text-accent-foreground uppercase font-semibold hover:bg-accent/90 transition-all shadow-xs"
             >
-              Rezervuoti vizitą
+              Tiesioginė registracija
             </a>
             <a
-              href="#kuponai"
-              className="border border-white/70 px-7 py-3.5 text-xs tracking-[0.15em] text-white uppercase font-semibold hover:bg-white/10 transition-all"
+              href="#registracija"
+              className="rounded-lg border border-white/70 px-7 py-3.5 text-xs tracking-[0.15em] text-white uppercase font-semibold hover:bg-white/10 transition-all"
             >
               Dovanų kuponai
             </a>
             <a
               href="#masazai"
-              className="px-4 py-3.5 text-xs tracking-[0.15em] text-white/80 uppercase hover:text-white transition-all underline underline-offset-4"
+              className="rounded-lg px-4 py-3.5 text-xs tracking-[0.15em] text-white/80 uppercase hover:text-white transition-all underline underline-offset-4"
             >
               Masažų sąrašas ↓
             </a>
           </div>
 
-          <div className="mt-8 inline-flex items-center gap-2 border border-white/30 bg-black/20 px-4 py-2 text-xs tracking-[0.12em] text-white uppercase backdrop-blur-xs">
+          <div className="mt-8 inline-flex items-center gap-2 rounded-full border border-white/30 bg-black/25 px-4 py-2 text-xs tracking-[0.12em] text-white uppercase backdrop-blur-xs">
             <Star className="size-3.5 fill-current text-accent" />
             ★ {STUDIO.rating} įvertinimas · Treatwell (178 atsiliepimai)
           </div>
@@ -107,7 +107,7 @@ function Index() {
 
       {/* Trust bar */}
       <div className="relative z-10 mx-auto -mt-10 max-w-5xl px-5 sm:-mt-12 lg:px-8">
-        <div className="border border-border/80 bg-card px-6 py-5 shadow-xs sm:px-8">
+        <div className="rounded-2xl border border-border/80 bg-card px-6 py-5 shadow-xs sm:px-8">
           <div className="flex flex-col gap-4 text-xs tracking-[0.12em] text-foreground/75 uppercase sm:flex-row sm:items-center sm:justify-between sm:gap-0 font-medium">
             <span className="inline-flex items-center gap-2.5">
               <Star className="size-4 shrink-0 fill-current text-accent" />★ {STUDIO.rating}{" "}
@@ -144,12 +144,12 @@ function Index() {
           <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {TREATMENTS.map((item, i) => (
               <Reveal key={item.id} delay={i * 50} className="h-full">
-                <article className="flex h-full flex-col border border-border/80 bg-card p-6 transition-all duration-300 hover:border-foreground/40 hover:shadow-xs">
+                <article className="flex h-full flex-col rounded-2xl border border-border/80 bg-card p-6 transition-all duration-300 hover:border-accent/60 hover:shadow-md">
                   <div className="flex items-start justify-between gap-2 border-b border-border/50 pb-4">
-                    <span className="text-[0.68rem] tracking-[0.15em] text-accent uppercase font-bold">
+                    <span className="rounded-full bg-accent/10 px-3 py-0.5 text-[0.68rem] tracking-[0.15em] text-accent uppercase font-bold">
                       {item.duration}
                     </span>
-                    <span className="text-xs font-bold text-foreground bg-secondary px-2.5 py-1">
+                    <span className="rounded-full bg-secondary px-3 py-0.5 text-xs font-bold text-foreground">
                       {item.price}
                     </span>
                   </div>
@@ -171,14 +171,14 @@ function Index() {
 
                   <div className="mt-6 pt-4 border-t border-border/50 flex items-center justify-between gap-2">
                     <a
-                      href="#paslaugos"
-                      className="text-xs tracking-[0.12em] uppercase font-semibold text-foreground underline underline-offset-4 hover:text-accent transition-colors"
+                      href="#registracija"
+                      className="rounded-lg bg-foreground/5 px-3 py-1.5 text-xs tracking-[0.12em] uppercase font-semibold text-foreground hover:bg-foreground hover:text-background transition-all"
                     >
-                      Rezervuoti
+                      Registruotis
                     </a>
                     <a
-                      href="#kuponai"
-                      className="text-xs tracking-[0.12em] uppercase text-accent font-semibold hover:text-foreground transition-colors"
+                      href="#registracija"
+                      className="rounded-lg px-2.5 py-1.5 text-xs tracking-[0.12em] uppercase text-accent font-semibold hover:text-foreground transition-colors"
                     >
                       Kuponas →
                     </a>
@@ -186,6 +186,13 @@ function Index() {
                 </article>
               </Reveal>
             ))}
+          </div>
+
+          <div className="mt-10 rounded-xl border border-border/60 bg-card/60 p-4 text-center text-xs text-foreground/70">
+            Masažus atlieka meistrė Kristina Jasevičiūtė · Taip pat galima rezervacija ir per{" "}
+            <a href="#treatwell" className="text-accent underline underline-offset-4 hover:text-foreground">
+              Treatwell programėlę
+            </a>
           </div>
         </div>
       </section>
@@ -240,18 +247,18 @@ function Index() {
                 </div>
               </div>
 
-              <div className="mt-8 flex flex-wrap gap-4">
+              <div className="mt-8 flex flex-wrap gap-3">
                 <a
-                  href="#kuponai"
-                  className="bg-foreground text-background px-7 py-3.5 text-xs tracking-[0.15em] uppercase font-semibold hover:bg-foreground/90 transition-all"
+                  href="#registracija"
+                  className="rounded-lg bg-foreground text-background px-7 py-3.5 text-xs tracking-[0.15em] uppercase font-semibold hover:bg-foreground/90 transition-all shadow-xs"
                 >
-                  Užsakyti dovanų kuponą
+                  Tiesioginė registracija
                 </a>
                 <a
-                  href="#paslaugos"
-                  className="border border-border/80 bg-background px-7 py-3.5 text-xs tracking-[0.15em] uppercase font-semibold text-foreground hover:bg-secondary transition-all"
+                  href="#registracija"
+                  className="rounded-lg border border-border/80 bg-background px-7 py-3.5 text-xs tracking-[0.15em] uppercase font-semibold text-foreground hover:bg-secondary transition-all"
                 >
-                  Rezervuoti vizitą internetu
+                  Užsakyti dovanų kuponą
                 </a>
               </div>
             </Reveal>
@@ -259,8 +266,8 @@ function Index() {
 
           <div className="lg:col-span-5">
             <Reveal delay={120}>
-              <div className="border border-border/80 p-2 bg-background shadow-xs">
-                <div className="relative overflow-hidden aspect-[3/4]">
+              <div className="rounded-2xl border border-border/80 p-2.5 bg-background shadow-xs">
+                <div className="relative overflow-hidden aspect-[3/4] rounded-xl">
                   <SmartImage
                     src={STUDIO.specialistPhoto}
                     fallback={PHOTOS[1]!}
@@ -268,7 +275,9 @@ function Index() {
                     className="size-full object-cover grayscale-[10%] contrast-[1.03]"
                   />
                   <div className="absolute bottom-0 inset-x-0 bg-linear-to-t from-black/85 via-black/45 to-transparent p-6 text-white">
-                    <p className="text-xs tracking-[0.15em] uppercase text-accent font-semibold">Specialistė</p>
+                    <p className="rounded-full inline-block bg-accent/20 px-3 py-0.5 text-xs tracking-[0.15em] uppercase text-accent font-semibold mb-1">
+                      Specialistė
+                    </p>
                     <p className="font-heading text-xl font-medium">Kristina Jasevičiūtė</p>
                     <p className="text-xs text-white/80 mt-1">Kūno terapijos ir masažų praktika Klaipėdoje</p>
                   </div>

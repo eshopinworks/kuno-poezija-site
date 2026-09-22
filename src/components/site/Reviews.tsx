@@ -15,7 +15,7 @@ function Stars({ className = "" }: { className?: string }) {
 
 function Avatar({ name }: { name: string }) {
   return (
-    <span className="grid size-8 shrink-0 place-items-center border border-accent/40 bg-accent/15 font-heading text-xs text-accent-foreground font-bold">
+    <span className="grid size-8 shrink-0 place-items-center rounded-full border border-accent/40 bg-accent/15 font-heading text-xs text-accent-foreground font-bold">
       {name.charAt(0).toUpperCase()}
     </span>
   );
@@ -41,7 +41,7 @@ export function Reviews() {
 
         <div className="mt-12 grid items-start gap-4 sm:gap-6 lg:grid-cols-5">
           <Reveal className="lg:col-span-3">
-            <figure className="relative overflow-hidden border border-border/80 bg-card p-8 shadow-xs sm:p-10">
+            <figure className="relative overflow-hidden rounded-2xl border border-border/80 bg-card p-8 shadow-xs sm:p-10">
               <span
                 aria-hidden
                 className="pointer-events-none absolute -top-10 right-4 font-heading text-[10rem] leading-none text-accent/10 select-none sm:text-[13rem]"
@@ -88,7 +88,7 @@ function SmallReview({
   return (
     <Reveal delay={80 * (index + 1)} className="h-full">
       <figure
-        className={`flex h-full flex-col border border-border/80 p-6 transition-all duration-300 hover:border-foreground/30 ${
+        className={`flex h-full flex-col rounded-xl border border-border/80 p-6 transition-all duration-300 hover:border-foreground/30 hover:shadow-2xs ${
           index % 2 === 0 ? "bg-card" : "bg-card/70"
         }`}
       >

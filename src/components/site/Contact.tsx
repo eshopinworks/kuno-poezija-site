@@ -24,10 +24,10 @@ export function Contact() {
 
         <div className="mt-10 grid items-start gap-8 lg:grid-cols-2">
           <Reveal>
-            <div className="border border-border/80 bg-card p-7 shadow-xs sm:p-8">
+            <div className="rounded-2xl border border-border/80 bg-card p-7 shadow-xs sm:p-8">
               <ul className="space-y-6">
                 <li className="flex gap-4">
-                  <span className="grid size-9 shrink-0 place-items-center border border-accent/40 bg-accent/10 text-accent">
+                  <span className="grid size-9 shrink-0 place-items-center rounded-full border border-accent/40 bg-accent/10 text-accent">
                     <MapPin className="size-4" />
                   </span>
                   <div className="min-w-0">
@@ -40,7 +40,7 @@ export function Contact() {
                 </li>
 
                 <li className="flex gap-4 border-t border-border/50 pt-6">
-                  <span className="grid size-9 shrink-0 place-items-center border border-accent/40 bg-accent/10 text-accent">
+                  <span className="grid size-9 shrink-0 place-items-center rounded-full border border-accent/40 bg-accent/10 text-accent">
                     <Clock className="size-4" />
                   </span>
                   <div className="min-w-0">
@@ -61,7 +61,7 @@ export function Contact() {
                 </li>
 
                 <li className="flex gap-4 border-t border-border/50 pt-6">
-                  <span className="grid size-9 shrink-0 place-items-center border border-accent/40 bg-accent/10 text-accent">
+                  <span className="grid size-9 shrink-0 place-items-center rounded-full border border-accent/40 bg-accent/10 text-accent">
                     <Phone className="size-4" />
                   </span>
                   <div className="min-w-0">
@@ -87,7 +87,7 @@ export function Contact() {
                 </li>
 
                 <li className="flex gap-4 border-t border-border/50 pt-6">
-                  <span className="grid size-9 shrink-0 place-items-center border border-accent/40 bg-accent/10 text-accent">
+                  <span className="grid size-9 shrink-0 place-items-center rounded-full border border-accent/40 bg-accent/10 text-accent">
                     <Mail className="size-4" />
                   </span>
                   <div className="min-w-0">
@@ -104,7 +104,7 @@ export function Contact() {
                 </li>
 
                 <li className="flex gap-4 border-t border-border/50 pt-6">
-                  <span className="grid size-9 shrink-0 place-items-center border border-accent/40 bg-accent/10 text-accent">
+                  <span className="grid size-9 shrink-0 place-items-center rounded-full border border-accent/40 bg-accent/10 text-accent">
                     <Globe className="size-4" />
                   </span>
                   <div className="min-w-0">
@@ -125,23 +125,23 @@ export function Contact() {
 
               <div className="mt-8 flex flex-wrap gap-3">
                 <a
-                  href="#kuponai"
-                  className="bg-accent px-6 py-3 text-xs tracking-[0.15em] text-accent-foreground uppercase font-semibold hover:bg-accent/90 transition-colors"
+                  href="#registracija"
+                  className="rounded-lg bg-foreground text-background px-6 py-3 text-xs tracking-[0.15em] uppercase font-semibold hover:bg-foreground/90 transition-colors shadow-xs"
                 >
-                  Dovanų kuponai
+                  Tiesioginė registracija
                 </a>
                 <a
-                  href="#paslaugos"
-                  className="border border-foreground/30 px-6 py-3 text-xs tracking-[0.15em] text-foreground uppercase font-semibold hover:bg-secondary transition-colors"
+                  href="#registracija"
+                  className="rounded-lg border border-foreground/30 px-6 py-3 text-xs tracking-[0.15em] text-foreground uppercase font-semibold hover:bg-secondary transition-colors"
                 >
-                  Rezervuoti vizitą
+                  Dovanų kuponai
                 </a>
               </div>
             </div>
           </Reveal>
 
           <Reveal delay={100}>
-            <div className="overflow-hidden border border-border/70 shadow-xs">
+            <div className="overflow-hidden rounded-2xl border border-border/70 shadow-xs">
               <iframe
                 title="Studijos vieta žemėlapyje"
                 loading="lazy"

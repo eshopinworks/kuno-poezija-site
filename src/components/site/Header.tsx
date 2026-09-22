@@ -63,8 +63,8 @@ export function Header() {
 
           <div className="flex items-center gap-2.5">
             <a
-              href="#kuponai"
-              className={`hidden items-center gap-2 border px-4 py-2 text-[0.7rem] tracking-[0.15em] uppercase sm:inline-flex transition-colors ${
+              href="#registracija"
+              className={`hidden items-center gap-1.5 border px-3.5 py-1.5 text-[0.68rem] tracking-[0.14em] uppercase sm:inline-flex transition-colors rounded-full font-medium ${
                 solid
                   ? "border-border text-foreground hover:bg-secondary"
                   : "border-white/50 text-white hover:bg-white/10"
@@ -74,17 +74,17 @@ export function Header() {
               Kuponai
             </a>
             <a
-              href="#paslaugos"
-              className="hidden bg-foreground text-background px-5 py-2 text-[0.7rem] tracking-[0.15em] uppercase sm:inline-block hover:bg-foreground/90 transition-colors"
+              href="#registracija"
+              className="hidden bg-foreground text-background px-4 py-2 text-[0.7rem] tracking-[0.14em] uppercase sm:inline-block hover:bg-foreground/90 transition-colors rounded-lg font-semibold"
             >
-              Rezervuoti vizitą
+              Tiesioginė registracija
             </a>
             <button
               type="button"
               aria-label={open ? "Uždaryti meniu" : "Atidaryti meniu"}
               aria-expanded={open}
               onClick={() => setOpen((v) => !v)}
-              className={`relative inline-flex size-10 items-center justify-center border transition-colors lg:hidden ${
+              className={`relative inline-flex size-10 items-center justify-center border transition-colors rounded-lg lg:hidden ${
                 solid ? "border-border text-foreground" : "border-white/50 text-white"
               }`}
             >
@@ -123,7 +123,7 @@ export function Header() {
           }`}
         />
         <div
-          className={`absolute inset-x-0 top-0 max-h-full overflow-y-auto border-t border-border/60 bg-background px-5 pt-4 pb-8 shadow-md transition-transform duration-300 ease-out ${
+          className={`absolute inset-x-0 top-0 max-h-full overflow-y-auto border-t border-border/60 bg-background px-5 pt-4 pb-8 shadow-md transition-transform duration-300 ease-out rounded-b-2xl ${
             open ? "translate-y-0" : "-translate-y-[130%]"
           }`}
         >
@@ -144,24 +144,24 @@ export function Header() {
           </nav>
           <div className="mt-6 flex flex-col gap-3">
             <a
-              href="#kuponai"
+              href="#registracija"
               onClick={() => setOpen(false)}
-              className="bg-accent px-5 py-3.5 text-center text-[0.72rem] tracking-[0.15em] text-accent-foreground uppercase font-semibold"
+              className="bg-foreground px-5 py-3.5 text-center text-[0.72rem] tracking-[0.15em] text-background uppercase font-semibold rounded-lg shadow-xs"
             >
-              Dovanų kuponai
+              Tiesioginė registracija
             </a>
             <a
-              href="#paslaugos"
+              href="#registracija"
               onClick={() => setOpen(false)}
-              className="bg-foreground px-5 py-3.5 text-center text-[0.72rem] tracking-[0.15em] text-background uppercase font-semibold"
+              className="bg-accent px-5 py-3.5 text-center text-[0.72rem] tracking-[0.15em] text-accent-foreground uppercase font-semibold rounded-lg shadow-xs"
             >
-              Rezervuoti vizitą
+              Dovanų kuponai
             </a>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
               <a
                 href={`tel:${STUDIO.phone}`}
                 onClick={() => setOpen(false)}
-                className="border border-border px-3 py-3.5 text-center text-[0.7rem] tracking-[0.12em] text-foreground uppercase flex items-center justify-center gap-2"
+                className="border border-border px-3 py-3.5 text-center text-[0.7rem] tracking-[0.12em] text-foreground uppercase flex items-center justify-center gap-2 rounded-lg"
               >
                 <Phone className="size-3.5 shrink-0" />
                 {STUDIO.phoneLabel}
@@ -169,7 +169,7 @@ export function Header() {
               <a
                 href={`tel:${STUDIO.phone2}`}
                 onClick={() => setOpen(false)}
-                className="border border-border px-3 py-3.5 text-center text-[0.7rem] tracking-[0.12em] text-foreground uppercase flex items-center justify-center gap-2"
+                className="border border-border px-3 py-3.5 text-center text-[0.7rem] tracking-[0.12em] text-foreground uppercase flex items-center justify-center gap-2 rounded-lg"
               >
                 <Phone className="size-3.5 shrink-0" />
                 {STUDIO.phone2Label}

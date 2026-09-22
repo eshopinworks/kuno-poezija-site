@@ -38,9 +38,9 @@ export const STUDIO = {
 };
 
 export const NAV = [
-  { href: "#paslaugos", label: "Masažai" },
+  { href: "#masazai", label: "Masažai" },
   { href: "#apie", label: "Apie meistrę" },
-  { href: "#kuponai", label: "Dovanų kuponai" },
+  { href: "#registracija", label: "Registracija ir kuponai" },
   { href: "#galerija", label: "Galerija" },
   { href: "#atsiliepimai", label: "Atsiliepimai" },
   { href: "#kontaktai", label: "Kontaktai" },
