@@ -14,28 +14,29 @@ export function Contact() {
       <div className="mx-auto max-w-6xl px-5 lg:px-8">
         <SectionHeading
           overline="Kontaktai"
-          ornament="05"
+          ornament="07"
           title={
             <>
-              Kur mus <em className="font-heading italic text-accent">rasite</em>
+              Kur mus <em className="font-heading italic text-accent font-normal">rasite</em>
             </>
           }
+          intro="Masažų studija įsikūrusi patogioje vietoje Klaipėdos centre. Maloniai kviečiame apsilankyti."
         />
 
-        <div className="mt-10 grid items-start gap-8 lg:grid-cols-2">
-          <Reveal>
-            <div className="rounded-2xl border border-border/80 bg-card p-7 shadow-xs sm:p-8">
-              <ul className="space-y-6">
-                <li className="flex gap-4">
-                  <span className="grid size-9 shrink-0 place-items-center rounded-full border border-accent/40 bg-accent/10 text-accent">
+        <div className="mt-12 grid items-start gap-10 lg:grid-cols-12">
+          <Reveal className="lg:col-span-6">
+            <div className="rounded-2xl border border-border/80 bg-card p-7 sm:p-9 shadow-sm">
+              <ul className="divide-y divide-border/50">
+                <li className="pb-5 flex gap-4">
+                  <span className="grid size-10 shrink-0 place-items-center rounded-full border border-accent/40 bg-accent/10 text-accent">
                     <MapPin className="size-4" />
                   </span>
                   <div className="min-w-0">
-                    <p className="text-[0.7rem] tracking-[0.15em] text-foreground/60 uppercase">
+                    <p className="text-[0.7rem] tracking-[0.16em] text-foreground/50 uppercase font-medium">
                       Adresas
                     </p>
-                    <p className="mt-1 text-base text-foreground font-medium">{STUDIO.address}</p>
-                    <p className="text-xs text-foreground/60 mt-0.5">Klaipėdos centras, patogus privažiavimas</p>
+                    <p className="mt-1 text-base text-foreground font-semibold">{STUDIO.address}</p>
+                    <p className="text-xs text-foreground/60 mt-0.5">Klaipėdos centras · 2 aukštas · Patogus privažiavimas</p>
                   </div>
                 </li>
 
@@ -140,14 +141,14 @@ export function Contact() {
             </div>
           </Reveal>
 
-          <Reveal delay={100}>
-            <div className="overflow-hidden rounded-2xl border border-border/70 shadow-xs">
+          <Reveal delay={100} className="lg:col-span-6 h-full">
+            <div className="overflow-hidden rounded-2xl border border-border/80 bg-card shadow-sm h-full min-h-[420px]">
               <iframe
                 title="Studijos vieta žemėlapyje"
                 loading="lazy"
                 src="https://www.google.com/maps?q=55.7168577,21.12900324&z=16&output=embed"
-                style={{ border: 0, width: "100%" }}
-                className="block h-[380px] sm:h-[450px]"
+                style={{ border: 0, width: "100%", height: "100%", minHeight: "420px" }}
+                className="block w-full"
               />
             </div>
           </Reveal>

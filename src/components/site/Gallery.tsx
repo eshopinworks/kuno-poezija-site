@@ -30,23 +30,23 @@ export function Gallery() {
       <div className="mx-auto max-w-6xl px-5 lg:px-8">
         <SectionHeading
           overline="Galerija"
-          ornament="04"
+          ornament="05"
           title={
             <>
-              Mūsų <em className="font-heading italic text-accent">erdvė</em>
+              Mūsų <em className="font-heading italic text-accent font-normal">erdvė</em>
             </>
           }
-          intro="Švari, šilta ir rami aplinka, kurioje viskas skirta jūsų atsipalaidavimui."
+          intro="Švari, šilta ir rami aplinka Klaipėdos centre, kurioje viskas skirta Jūsų atsipalaidavimui."
         />
 
         <Reveal delay={100}>
-          <div className="mt-10 grid auto-rows-[10rem] grid-cols-2 gap-3 sm:auto-rows-[12rem] sm:grid-cols-3 sm:gap-4 lg:auto-rows-[14rem]">
+          <div className="mt-12 grid auto-rows-[12rem] grid-cols-2 gap-3 sm:auto-rows-[15rem] sm:grid-cols-3 sm:gap-4 lg:auto-rows-[18rem]">
             {PHOTOS.map((src, i) => (
               <button
                 key={src}
                 type="button"
                 onClick={() => setActive(i)}
-                className={`group relative overflow-hidden rounded-xl border border-border/80 bg-secondary shadow-2xs ${tileClass(i, total)}`}
+                className={`group relative overflow-hidden rounded-2xl border border-border/80 bg-secondary shadow-2xs ${tileClass(i, total)} cursor-pointer`}
                 aria-label={`Atidaryti nuotrauką: ${ALTS[i] ?? "studijos nuotrauka"}`}
               >
                 <SmartImage
@@ -55,7 +55,11 @@ export function Gallery() {
                   alt={ALTS[i] ?? "Studijos nuotrauka"}
                   className="size-full object-cover transition-transform duration-700 group-hover:scale-105"
                 />
-                <span className="absolute inset-0 bg-foreground/0 transition-colors duration-500 group-hover:bg-foreground/10" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-4 flex items-end">
+                  <span className="text-xs text-white/95 font-medium tracking-wide">
+                    {ALTS[i]}
+                  </span>
+                </div>
               </button>
             ))}
           </div>

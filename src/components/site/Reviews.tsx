@@ -29,7 +29,7 @@ export function Reviews() {
       <div className="mx-auto max-w-6xl px-5 lg:px-8">
         <SectionHeading
           overline="Klientų atsiliepimai"
-          ornament="✦"
+          ornament="06"
           title={
             <>
               ★ {STUDIO.rating} · {STUDIO.reviewCount} atsiliepimai per{" "}
@@ -39,64 +39,57 @@ export function Reviews() {
           intro="Mūsų klientų įvertinimai ir nuoširdūs patyrimai po apsilankymo."
         />
 
-        <div className="mt-12 grid items-start gap-4 sm:gap-6 lg:grid-cols-5">
-          <Reveal className="lg:col-span-3">
-            <figure className="relative overflow-hidden rounded-2xl border border-border/80 bg-card p-8 shadow-xs sm:p-10 flex flex-col justify-between h-full">
-              <blockquote className="font-heading text-xl leading-snug text-foreground sm:text-2xl font-normal">
-                "{featured?.text}"
-              </blockquote>
-              <figcaption className="mt-8 flex items-center gap-3 border-t border-border/50 pt-4">
-                <Avatar name={featured?.name ?? ""} />
-                <span className="text-xs tracking-[0.15em] text-foreground/80 uppercase font-semibold whitespace-nowrap">
-                  {featured?.name}
-                </span>
-                <Stars />
+        <div className="mt-12 grid items-start gap-10 lg:grid-cols-12">
+          {/* Featured Testimonial */}
+          <Reveal className="lg:col-span-5 lg:sticky lg:top-28">
+            <figure className="relative overflow-hidden rounded-2xl border border-border/80 bg-card p-8 sm:p-10 shadow-sm flex flex-col justify-between h-full">
+              <div className="space-y-5">
+                <Stars className="scale-110 origin-left" />
+                <blockquote className="font-heading text-2xl leading-snug text-foreground font-normal">
+                  "{featured?.text}"
+                </blockquote>
+              </div>
+              <figcaption className="mt-8 flex items-center justify-between gap-3 border-t border-border/50 pt-5">
+                <div className="flex items-center gap-3">
+                  <Avatar name={featured?.name ?? ""} />
+                  <div>
+                    <span className="block text-xs tracking-[0.15em] text-foreground uppercase font-semibold whitespace-nowrap">
+                      {featured?.name}
+                    </span>
+                    <span className="text-[0.68rem] text-foreground/50">Patvirtintas vizitas · Treatwell</span>
+                  </div>
+                </div>
+                <span className="text-xs font-mono text-accent font-semibold">5.0 / 5.0</span>
               </figcaption>
             </figure>
           </Reveal>
 
-          <div className="grid gap-4 lg:col-span-2">
-            {rest.slice(0, 2).map((review, i) => (
-              <SmallReview key={review.name} review={review} index={i} />
-            ))}
-          </div>
-
-          <div className="grid gap-4 sm:grid-cols-2 lg:col-span-5">
-            {rest.slice(2).map((review, i) => (
-              <SmallReview key={review.name} review={review} index={i + 2} />
+          {/* Testimonial List with Hairline Dividers */}
+          <div className="lg:col-span-7 divide-y divide-border/60">
+            {rest.map((review, i) => (
+              <Reveal key={review.name} delay={60 * (i + 1)}>
+                <article className="py-6 first:pt-0 last:pb-0">
+                  <div className="flex items-center justify-between gap-3 mb-2.5">
+                    <div className="flex items-center gap-3">
+                      <Avatar name={review.name} />
+                      <div>
+                        <span className="text-xs tracking-[0.12em] text-foreground uppercase font-semibold whitespace-nowrap">
+                          {review.name}
+                        </span>
+                        <span className="block text-[0.65rem] text-foreground/50">Apsilankymas studijoje</span>
+                      </div>
+                    </div>
+                    <Stars />
+                  </div>
+                  <blockquote className="mt-2 text-sm leading-relaxed text-foreground/80 pl-11">
+                    "{review.text}"
+                  </blockquote>
+                </article>
+              </Reveal>
             ))}
           </div>
         </div>
       </div>
     </section>
-  );
-}
-
-function SmallReview({
-  review,
-  index,
-}: {
-  review: { name: string; text: string };
-  index: number;
-}) {
-  return (
-    <Reveal delay={80 * (index + 1)} className="h-full">
-      <figure
-        className={`flex h-full flex-col rounded-xl border border-border/80 p-6 transition-all duration-300 hover:border-foreground/30 hover:shadow-2xs ${
-          index % 2 === 0 ? "bg-card" : "bg-card/70"
-        }`}
-      >
-        <blockquote className="flex-1 text-sm leading-relaxed text-foreground/85">
-          "{review.text}"
-        </blockquote>
-        <figcaption className="mt-5 flex items-center gap-3 border-t border-border/50 pt-4">
-          <Avatar name={review.name} />
-          <span className="text-xs tracking-[0.12em] text-foreground/70 uppercase font-medium whitespace-nowrap">
-            {review.name}
-          </span>
-          <Stars />
-        </figcaption>
-      </figure>
-    </Reveal>
   );
 }

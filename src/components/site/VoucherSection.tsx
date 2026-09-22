@@ -62,48 +62,103 @@ export function VoucherSection() {
   return (
     <section id="registracija" className="scroll-mt-24 bg-card py-20 sm:py-28 border-y border-border/60">
       <span id="kuponai" className="sr-only" />
-      <div className="mx-auto max-w-4xl px-5 lg:px-8">
-        <SectionHeading
-          overline="Tiesioginis užsakymas"
-          ornament="03"
-          title={
-            <>
-              Tiesioginė registracija ir{" "}
-              <em className="font-heading italic text-accent">dovanų kuponai</em>
-            </>
-          }
-          intro="Rezervuokitės laiką vizitui arba užsisakykite dovanų kuponą tiesiogiai pas meistrę Kristiną be jokių tarpininkų antkainių."
-        />
+      <div className="mx-auto max-w-6xl px-5 lg:px-8">
+        <div className="grid gap-12 lg:grid-cols-12 items-start">
+          {/* Left Column: Heading + Concierge Guide */}
+          <div className="lg:col-span-5 lg:sticky lg:top-28">
+            <SectionHeading
+              overline="Tiesioginis užsakymas"
+              ornament="03"
+              title={
+                <>
+                  Tiesioginė registracija ir{" "}
+                  <em className="font-heading italic text-accent font-normal">dovanų kuponai</em>
+                </>
+              }
+              intro="Rezervuokitės laiką vizitui arba užsisakykite dovanų kuponą tiesiogiai pas meistrę Kristiną be jokių tarpininkų antkainių."
+            />
 
-        <Reveal delay={80} className="mt-10">
-          <div className="rounded-2xl border border-border/80 bg-background p-6 sm:p-10 shadow-sm">
-            {/* Toggle Tabs */}
-            <div className="flex rounded-full border border-border/80 bg-card p-1.5 gap-1 max-w-xl mx-auto">
-              <button
-                type="button"
-                onClick={() => { setTab("booking"); setSubmitted(false); }}
-                className={`flex-1 py-3 px-4 text-xs tracking-[0.08em] uppercase font-semibold transition-all flex items-center justify-center gap-2 rounded-full whitespace-nowrap ${
-                  tab === "booking"
-                    ? "bg-foreground text-background shadow-xs"
-                    : "text-foreground/70 hover:text-foreground hover:bg-background/50"
-                }`}
-              >
-                <CalendarCheck className="size-4 shrink-0" />
-                Tiesioginė registracija
-              </button>
-              <button
-                type="button"
-                onClick={() => { setTab("voucher"); setSubmitted(false); }}
-                className={`flex-1 py-3 px-4 text-xs tracking-[0.08em] uppercase font-semibold transition-all flex items-center justify-center gap-2 rounded-full whitespace-nowrap ${
-                  tab === "voucher"
-                    ? "bg-foreground text-background shadow-xs"
-                    : "text-foreground/70 hover:text-foreground hover:bg-background/50"
-                }`}
-              >
-                <Gift className="size-4 shrink-0" />
-                Dovanų kuponas
-              </button>
-            </div>
+            <Reveal delay={80}>
+              <div className="mt-8 space-y-5 border-t border-border/60 pt-6">
+                <div className="space-y-4">
+                  <div className="flex items-start gap-3.5">
+                    <span className="font-mono text-xs text-accent font-semibold shrink-0 mt-0.5">01</span>
+                    <div>
+                      <p className="text-sm font-semibold text-foreground">Asmeninis dėmesys</p>
+                      <p className="text-xs text-foreground/75 leading-relaxed mt-0.5">
+                        Jūsų registraciją peržiūri ir patvirtina pati meistrė Kristina Jasevičiūtė.
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start gap-3.5 border-t border-border/40 pt-3.5">
+                    <span className="font-mono text-xs text-accent font-semibold shrink-0 mt-0.5">02</span>
+                    <div>
+                      <p className="text-sm font-semibold text-foreground">Dovanų kuponai el. formatu</p>
+                      <p className="text-xs text-foreground/75 leading-relaxed mt-0.5">
+                        Kuponą paruošiame ir atsiunčiame PDF formatu su Jūsų pageidaujamu sveikinimu.
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start gap-3.5 border-t border-border/40 pt-3.5">
+                    <span className="font-mono text-xs text-accent font-semibold shrink-0 mt-0.5">03</span>
+                    <div>
+                      <p className="text-sm font-semibold text-foreground">Saugus atsiskaitymas pavedimu</p>
+                      <p className="text-xs text-foreground/75 leading-relaxed mt-0.5">
+                        SEB: <span className="font-mono font-medium text-foreground">{STUDIO.bankDetails.iban}</span>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="border-t border-border/60 pt-5 text-xs text-foreground/70 space-y-2">
+                  <p>Skubiam susisiekimui ar konsultacijai:</p>
+                  <div className="flex flex-wrap items-center gap-3 font-semibold text-foreground">
+                    <a href={`tel:${STUDIO.phone}`} className="hover:underline text-accent whitespace-nowrap">
+                      {STUDIO.phoneLabel}
+                    </a>
+                    <span className="text-foreground/30">/</span>
+                    <a href={`tel:${STUDIO.phone2}`} className="hover:underline text-accent whitespace-nowrap">
+                      {STUDIO.phone2Label}
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </Reveal>
+          </div>
+
+          {/* Right Column: Form Suite */}
+          <div className="lg:col-span-7">
+            <Reveal delay={100}>
+              <div className="rounded-2xl border border-border/80 bg-background p-6 sm:p-9 shadow-sm">
+                {/* Toggle Tabs */}
+                <div className="flex rounded-full border border-border/80 bg-card p-1.5 gap-1">
+                  <button
+                    type="button"
+                    onClick={() => { setTab("booking"); setSubmitted(false); }}
+                    className={`flex-1 py-3 px-3 text-xs tracking-[0.08em] uppercase font-semibold transition-all flex items-center justify-center gap-2 rounded-full whitespace-nowrap ${
+                      tab === "booking"
+                        ? "bg-foreground text-background shadow-xs"
+                        : "text-foreground/70 hover:text-foreground hover:bg-background/50"
+                    }`}
+                  >
+                    <CalendarCheck className="size-4 shrink-0" />
+                    Tiesioginė registracija
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => { setTab("voucher"); setSubmitted(false); }}
+                    className={`flex-1 py-3 px-3 text-xs tracking-[0.08em] uppercase font-semibold transition-all flex items-center justify-center gap-2 rounded-full whitespace-nowrap ${
+                      tab === "voucher"
+                        ? "bg-foreground text-background shadow-xs"
+                        : "text-foreground/70 hover:text-foreground hover:bg-background/50"
+                    }`}
+                  >
+                    <Gift className="size-4 shrink-0" />
+                    Dovanų kuponas
+                  </button>
+                </div>
 
             {submitted ? (
               <div className="mt-8 rounded-xl border border-accent/40 bg-accent/10 p-8 text-center">
@@ -349,6 +404,8 @@ export function VoucherSection() {
           </div>
         </Reveal>
       </div>
-    </section>
-  );
+    </div>
+  </div>
+</section>
+);
 }

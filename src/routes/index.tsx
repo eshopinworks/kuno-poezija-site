@@ -105,29 +105,27 @@ function Index() {
         </div>
       </section>
 
-      {/* Trust bar */}
-      <div className="relative z-10 mx-auto -mt-8 max-w-5xl px-5 sm:-mt-10 lg:px-8">
-        <div className="rounded-full border border-border/80 bg-card/95 px-6 py-3.5 shadow-sm backdrop-blur-md">
-          <div className="flex flex-wrap items-center justify-center sm:justify-between gap-y-2 gap-x-6 text-xs tracking-[0.08em] uppercase text-foreground/85 font-medium">
-            <span className="inline-flex items-center gap-2 whitespace-nowrap">
+      {/* Architectural Trust Strip */}
+      <div className="relative z-10 border-y border-border/80 bg-card py-5">
+        <div className="mx-auto max-w-6xl px-5 lg:px-8">
+          <div className="grid grid-cols-1 sm:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x divide-border/60 text-xs tracking-[0.08em] uppercase text-foreground/85 font-medium">
+            <div className="flex items-center justify-center gap-2.5 py-2.5 sm:py-0 sm:px-6">
               <Star className="size-4 shrink-0 fill-current text-accent" />
-              <strong>★ {STUDIO.rating}</strong> įvertinimas
-            </span>
-            <span aria-hidden className="hidden sm:block h-3.5 w-px bg-border/80" />
-            <span className="inline-flex items-center gap-2 whitespace-nowrap">
+              <span className="whitespace-nowrap"><strong className="text-foreground">★ {STUDIO.rating}</strong> įvertinimas · Treatwell</span>
+            </div>
+            <div className="flex items-center justify-center gap-2.5 py-2.5 sm:py-0 sm:px-6">
               <Sparkles className="size-4 shrink-0 text-accent" />
-              <strong>{STUDIO.reviewCount}</strong> atsiliepimai
-            </span>
-            <span aria-hidden className="hidden sm:block h-3.5 w-px bg-border/80" />
-            <span className="inline-flex min-w-0 items-center gap-2 whitespace-nowrap">
+              <span className="whitespace-nowrap"><strong className="text-foreground">{STUDIO.reviewCount}</strong> klientų atsiliepimai</span>
+            </div>
+            <div className="flex items-center justify-center gap-2.5 py-2.5 sm:py-0 sm:px-6">
               <MapPin className="size-4 shrink-0 text-accent" />
-              <span className="normal-case">{STUDIO.address}</span>
-            </span>
+              <span className="whitespace-nowrap normal-case font-semibold text-foreground">{STUDIO.address}</span>
+            </div>
           </div>
         </div>
       </div>
 
-      {/* Treatments List (All 8 requested) */}
+      {/* Treatments List - Editorial Menu de Soins */}
       <section id="masazai" className="scroll-mt-24 bg-background py-20 sm:py-28">
         <div className="mx-auto max-w-6xl px-5 lg:px-8">
           <SectionHeading
@@ -141,54 +139,60 @@ function Index() {
             intro="Kiekvienas masažas atliekamas su profesionaliu dėmesiu žmogaus kūnui, parinktas pagal jūsų poreikį ir siekiamą rezultatą."
           />
 
-          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-12 grid gap-x-14 gap-y-0 lg:grid-cols-2">
             {TREATMENTS.map((item, i) => (
-              <Reveal key={item.id} delay={i * 50} className="h-full">
-                <article className="flex h-full flex-col rounded-2xl border border-border/80 bg-card p-6 transition-all duration-300 hover:border-accent/60 hover:shadow-md">
-                  <div className="flex items-center justify-between gap-2 border-b border-border/50 pb-3.5">
-                    <span className="rounded-full bg-accent/15 px-3 py-1 text-[0.68rem] tracking-[0.12em] text-accent uppercase font-bold whitespace-nowrap">
-                      {item.duration}
-                    </span>
-                    <span className="rounded-full bg-secondary/80 px-3 py-1 text-xs font-bold text-foreground whitespace-nowrap">
-                      {item.price}
-                    </span>
-                  </div>
-
-                  <h3 className="mt-4 font-heading text-xl text-foreground font-semibold">
-                    {item.title}
-                  </h3>
-
-                  <div className="mt-3.5 space-y-3 flex-1 text-sm text-foreground/80 leading-relaxed">
-                    <div>
-                      <p className="text-[0.68rem] tracking-[0.12em] uppercase font-bold text-foreground/50">Kam skirtas:</p>
-                      <p className="mt-1">{item.forWhom}</p>
-                    </div>
-                    <div>
-                      <p className="text-[0.68rem] tracking-[0.12em] uppercase font-bold text-accent">Pojūtis:</p>
-                      <p className="mt-1 italic text-foreground/75 font-serif">{item.feeling}</p>
+              <Reveal key={item.id} delay={i * 40}>
+                <article className="group border-b border-border/70 py-7 transition-colors hover:border-accent/80">
+                  <div className="flex items-baseline justify-between gap-4">
+                    <h3 className="font-heading text-xl sm:text-2xl text-foreground font-medium group-hover:text-accent transition-colors">
+                      {item.title}
+                    </h3>
+                    <div className="flex items-baseline gap-2 shrink-0">
+                      <span className="text-xs font-mono text-foreground/60 tracking-wider">
+                        {item.duration}
+                      </span>
+                      <span className="text-sm font-semibold text-foreground">
+                        {item.price}
+                      </span>
                     </div>
                   </div>
 
-                  <div className="mt-6 pt-4 border-t border-border/50 flex items-center justify-between gap-2">
-                    <a
-                      href="#registracija"
-                      className="rounded-full bg-foreground text-background px-4 py-2 text-xs font-semibold hover:bg-foreground/90 transition-all whitespace-nowrap shadow-2xs"
-                    >
-                      Registruotis
-                    </a>
-                    <a
-                      href="#registracija"
-                      className="rounded-full border border-border/80 bg-background px-3.5 py-2 text-xs font-medium text-foreground/80 hover:bg-secondary transition-all whitespace-nowrap"
-                    >
-                      Kuponas
-                    </a>
+                  <div className="mt-3 space-y-1.5 text-sm text-foreground/80 leading-relaxed">
+                    <p>
+                      <span className="text-xs font-semibold uppercase tracking-wider text-foreground/50 mr-2">Kam tinka:</span>
+                      {item.forWhom}
+                    </p>
+                    <p className="font-serif italic text-foreground/75 text-sm">
+                      <span className="font-sans not-italic text-xs font-semibold uppercase tracking-wider text-accent mr-2">Pojūtis:</span>
+                      {item.feeling}
+                    </p>
+                  </div>
+
+                  <div className="mt-5 flex items-center justify-between gap-3 pt-1">
+                    <div className="flex items-center gap-2">
+                      <a
+                        href="#registracija"
+                        className="rounded-full bg-foreground text-background px-4 py-1.5 text-xs font-semibold hover:bg-foreground/90 transition-all whitespace-nowrap shadow-2xs"
+                      >
+                        Registruotis
+                      </a>
+                      <a
+                        href="#registracija"
+                        className="rounded-full border border-border/80 bg-background px-4 py-1.5 text-xs font-medium text-foreground/80 hover:bg-secondary transition-all whitespace-nowrap"
+                      >
+                        Kuponas
+                      </a>
+                    </div>
+                    <span className="text-[0.68rem] tracking-widest text-foreground/35 uppercase font-mono">
+                      0{i + 1}
+                    </span>
                   </div>
                 </article>
               </Reveal>
             ))}
           </div>
 
-          <div className="mt-10 rounded-full border border-border/60 bg-card/80 py-3.5 px-6 text-center text-xs text-foreground/75 shadow-2xs max-w-2xl mx-auto flex flex-wrap items-center justify-center gap-1.5">
+          <div className="mt-12 border-t border-border/60 pt-6 text-center text-xs text-foreground/75 flex flex-wrap items-center justify-center gap-2">
             <span>Visus masažus atlieka meistrė Kristina Jasevičiūtė.</span>
             <span className="text-foreground/40 hidden sm:inline">·</span>
             <span>Rezervuotis galima ir per</span>
@@ -201,11 +205,11 @@ function Index() {
 
       {/* About Specialist Kristina (Expanded based on feedback) */}
       <section id="apie" className="scroll-mt-24 bg-card py-20 sm:py-28 border-y border-border/60">
-        <div className="mx-auto grid max-w-6xl items-center gap-12 px-5 lg:grid-cols-12 lg:px-8">
+        <div className="mx-auto grid max-w-6xl items-start gap-12 px-5 lg:grid-cols-12 lg:px-8">
           <div className="lg:col-span-7">
             <SectionHeading
               overline="Apie meistrę"
-              ornament="✦"
+              ornament="02"
               title={
                 <>
                   Dėmesys žmogaus kūnui,{" "}
@@ -215,10 +219,10 @@ function Index() {
             />
             <Reveal delay={80}>
               <div className="mt-6 space-y-4 text-base leading-relaxed text-foreground/85">
-                <p className="font-serif text-lg italic text-foreground/90 border-l-2 border-accent pl-4">
+                <blockquote className="font-serif text-lg sm:text-xl italic text-foreground/90 border-l-2 border-accent pl-5 py-1">
                   „Mano tikslas - ne tiesiog atlikti procedūrą ar standartinį masažą, o pajusti žmogaus kūną,
                   įsiklausyti į esamą būklę ir parinkti individualų prisilietimą, kuris atkuria pusiausvyrą.“
-                </p>
+                </blockquote>
                 <p>
                   Masažus atlieka patyrusi meistrė <strong>Kristina Jasevičiūtė</strong>. Esu sukaupusi gilią įvairių
                   masažo technikų patirtį: nuo tonizuojančio sportinio bei giliojo audinių masažo iki švelnaus
@@ -231,18 +235,24 @@ function Index() {
                 </p>
               </div>
 
-              {/* Guiding Principles */}
-              <div className="mt-8 border-t border-border/60 pt-6">
-                <p className="text-xs tracking-[0.15em] text-foreground/60 uppercase font-semibold mb-4">
+              {/* Guiding Principles - Architectural Numbered List */}
+              <div className="mt-10 border-t border-border/70 pt-8">
+                <p className="text-xs tracking-[0.18em] text-foreground/60 uppercase font-semibold mb-6">
                   Veiklos filosofija ir darbo principai:
                 </p>
-                <div className="grid sm:grid-cols-2 gap-3">
-                  {PRINCIPLES.map((p) => (
-                    <div key={p.title} className="flex items-start gap-2.5 rounded-xl border border-border/40 bg-background/50 p-2.5">
-                      <Check className="size-4 shrink-0 text-accent mt-0.5" />
-                      <div>
-                        <strong className="text-sm font-semibold text-foreground">{p.title}:</strong>
-                        <span className="text-xs text-foreground/75 ml-1">{p.desc}</span>
+                <div className="space-y-4">
+                  {PRINCIPLES.map((p, idx) => (
+                    <div key={p.title} className="flex items-baseline gap-4 border-b border-border/40 pb-3">
+                      <span className="font-mono text-xs text-accent font-semibold shrink-0">
+                        0{idx + 1}
+                      </span>
+                      <div className="text-sm">
+                        <strong className="font-heading text-base font-medium text-foreground mr-2">
+                          {p.title}:
+                        </strong>
+                        <span className="text-foreground/75 leading-relaxed">
+                          {p.desc}
+                        </span>
                       </div>
                     </div>
                   ))}
@@ -266,21 +276,21 @@ function Index() {
             </Reveal>
           </div>
 
-          <div className="lg:col-span-5">
+          <div className="lg:col-span-5 lg:sticky lg:top-28">
             <Reveal delay={120}>
-              <div className="rounded-2xl border border-border/80 p-2.5 bg-background shadow-xs">
-                <div className="relative overflow-hidden aspect-[3/4] rounded-xl">
+              <div className="relative">
+                <div className="relative overflow-hidden aspect-[3/4] rounded-2xl border border-border/80 bg-background shadow-sm">
                   <SmartImage
                     src={STUDIO.specialistPhoto}
                     fallback={PHOTOS[1]!}
                     alt="Masažų specialistė Kristina Jasevičiūtė"
-                    className="size-full object-cover grayscale-[10%] contrast-[1.03]"
+                    className="size-full object-cover grayscale-[8%] contrast-[1.03]"
                   />
                   <div className="absolute bottom-0 inset-x-0 bg-linear-to-t from-black/85 via-black/45 to-transparent p-6 text-white">
-                    <p className="rounded-full inline-block bg-accent/20 px-3 py-0.5 text-xs tracking-[0.15em] uppercase text-accent font-semibold mb-1">
-                      Specialistė
+                    <p className="rounded-full inline-block bg-accent/25 px-3 py-0.5 text-xs tracking-[0.15em] uppercase text-accent font-semibold mb-1">
+                      Meistrė
                     </p>
-                    <p className="font-heading text-xl font-medium">Kristina Jasevičiūtė</p>
+                    <p className="font-heading text-2xl font-medium">Kristina Jasevičiūtė</p>
                     <p className="text-xs text-white/80 mt-1">Kūno terapijos ir masažų praktika Klaipėdoje</p>
                   </div>
                 </div>
