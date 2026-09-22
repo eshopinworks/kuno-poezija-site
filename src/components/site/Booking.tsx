@@ -34,8 +34,7 @@ export function Booking() {
                   Rezervacija per <em className="font-heading italic text-accent font-normal">Treatwell</em> sistemą
                 </h3>
                 <p className="text-sm text-foreground/75 leading-relaxed pt-1">
-                  Jei esate įpratę naudotis Treatwell programėle, galite patogiai pasirinkti laiką ir per ją.
-                  Rekomenduojame tiesioginę registraciją viršuje be papildomų tarpininkų antkainių.
+                  Jei esate įpratę naudotis Treatwell programėle, galite patogiai pasirinkti procedūros laiką ir per šią sistemą.
                 </p>
               </div>
 

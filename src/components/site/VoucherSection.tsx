@@ -5,7 +5,6 @@ import {
   CheckCircle2,
   AlertCircle,
   Send,
-  ShieldCheck,
   Sparkles,
 } from "lucide-react";
 import { STUDIO, TREATMENTS } from "./site-data";
@@ -150,7 +149,7 @@ export function VoucherSection() {
                   <em className="font-heading italic text-accent font-normal">dovanų kuponai</em>
                 </>
               }
-              intro="Rezervuokitės laiką vizitui arba užsisakykite asmeninį dovanų kuponą tiesiogiai pas meistrę Kristiną be jokių tarpininkų antkainių."
+              intro="Rezervuokitės laiką vizitui arba užsisakykite asmeninį dovanų kuponą tiesiogiai pas meistrę Kristiną."
             />
 
             <Reveal delay={80}>
@@ -179,9 +178,9 @@ export function VoucherSection() {
                   <div className="flex items-start gap-3 border-t border-border/40 pt-3">
                     <span className="font-mono text-xs text-accent font-semibold shrink-0 mt-0.5">03</span>
                     <div>
-                      <p className="text-sm font-semibold text-foreground">Tiesioginis susitarimas</p>
+                      <p className="text-sm font-semibold text-foreground">Rami erdvė centre</p>
                       <p className="text-xs text-foreground/75 leading-relaxed mt-0.5">
-                        Visos vizito detalės derinamos asmeniškai, be jokių išankstinių antkainių ar mokesčių.
+                        Jauki studija Klaipėdos centre, kur visas laikas skiriamas tik Jūsų poilsiui.
                       </p>
                     </div>
                   </div>
@@ -592,7 +591,7 @@ export function VoucherSection() {
                     )}
 
                     {/* Submit Actions */}
-                    <div className="pt-2 flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-t border-border/50">
+                    <div className="pt-2 flex items-center justify-start border-t border-border/50">
                       <button
                         type="submit"
                         disabled={loading}
@@ -604,15 +603,11 @@ export function VoucherSection() {
                           <>
                             <Send className="size-3.5 shrink-0" />
                             <span>
-                              {tab === "booking" ? "Pateikti tiesioginę registraciją" : "Užsakyti dovanų kuponą"}
+                              {tab === "booking" ? "Pateikti registraciją" : "Užsakyti dovanų kuponą"}
                             </span>
                           </>
                         )}
                       </button>
-                      <p className="text-xs text-foreground/60 flex items-center gap-1.5 self-start sm:self-auto">
-                        <ShieldCheck className="size-3.5 text-accent shrink-0" />
-                        <span>Tiesioginis susitarimas · Be tarpininkų</span>
-                      </p>
                     </div>
                   </form>
                 )}
