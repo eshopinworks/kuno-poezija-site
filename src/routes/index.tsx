@@ -1,0 +1,297 @@
+import { createFileRoute } from "@tanstack/react-router";
+import { Sparkles, Star, MapPin, Check, Heart, Shield, Award } from "lucide-react";
+import { Header } from "@/components/site/Header";
+import { Booking } from "@/components/site/Booking";
+import { VoucherSection } from "@/components/site/VoucherSection";
+import { Gallery } from "@/components/site/Gallery";
+import { Reviews } from "@/components/site/Reviews";
+import { Contact } from "@/components/site/Contact";
+import { Reveal, SmartImage } from "@/components/site/Reveal";
+import { SectionHeading } from "@/components/site/SectionHeading";
+import { FALLBACK_PHOTOS, PHOTOS, STUDIO, TREATMENTS } from "@/components/site/site-data";
+
+const title = "Masažų studija Kūno poezija - masažai Klaipėdoje";
+const description =
+  "Profesionalūs kūno ir veido masažai Klaipėdos centre. Meistrė Kristina Jasevičiūtė. Dovanų kuponai, rezervacija internetu. 5,0 įvertinimas, 178 atsiliepimai.";
+
+export const Route = createFileRoute("/")({
+  head: () => ({
+    meta: [
+      { title },
+      { name: "description", content: description },
+      { property: "og:title", content: title },
+      { property: "og:description", content: description },
+      { property: "og:type", content: "website" },
+      { property: "og:url", content: "/" },
+      { property: "og:image", content: PHOTOS[0]! },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:image", content: PHOTOS[0]! },
+    ],
+    links: [{ rel: "canonical", href: "/" }],
+  }),
+  component: Index,
+});
+
+const PRINCIPLES = [
+  { title: "Natūralumas", desc: "Naudojami tik aukščiausios kokybės natūralūs aliejai ir priemonės." },
+  { title: "Profesionalumas", desc: "Nuolatinis tobulinimasis, anatomijos ir kūno biomechanikos išmanymas." },
+  { title: "Ramybė", desc: "Jauki, lėta aplinka H. Manto gatvėje, kurioje laikas sustoja." },
+  { title: "Žmogaus kūnas", desc: "Pagarba kūno riboms, dėmesys raumenų įtampoms ir fascijų atpalaidavimui." },
+  { title: "Individualus dėmesys", desc: "Kiekviena technika parenkama pagal konkretaus žmogaus poreikį." },
+];
+
+function Index() {
+  return (
+    <div id="top" className="min-h-screen bg-background font-body text-foreground selection:bg-accent selection:text-accent-foreground">
+      <Header />
+
+      {/* Hero */}
+      <section className="relative flex min-h-[92svh] items-end overflow-hidden">
+        <SmartImage
+          src={PHOTOS[0]!}
+          fallback={FALLBACK_PHOTOS[0]!}
+          alt="Masažų studijos Kūno poezija erdvė"
+          loading="eager"
+          className="animate-kenburns absolute inset-0 size-full object-cover"
+        />
+        <div
+          aria-hidden
+          className="absolute inset-0 bg-[linear-gradient(to_top,rgba(35,32,30,0.92)_0%,rgba(35,32,30,0.65)_35%,rgba(35,32,30,0.25)_65%,rgba(35,32,30,0.1)_100%)]"
+        />
+        <div
+          aria-hidden
+          className="absolute inset-0 bg-[linear-gradient(to_right,rgba(35,32,30,0.6)_0%,rgba(35,32,30,0.2)_55%,rgba(35,32,30,0)_100%)]"
+        />
+
+        <div className="relative mx-auto w-full max-w-6xl px-5 pt-32 pb-20 lg:px-8 lg:pb-28">
+          <p className="text-[0.68rem] tracking-[0.2em] text-accent uppercase font-medium">
+            Masažų studija Klaipėdos centre · H. Manto g. 36A
+          </p>
+
+          <h1 className="mt-4 max-w-2xl font-heading text-4xl leading-[1.1] text-white sm:text-5xl lg:text-6xl">
+            Profesionalūs kūno ir veido masažai{" "}
+            <em className="font-heading text-accent italic font-normal">Klaipėdoje</em>
+          </h1>
+          <p className="mt-5 max-w-xl text-base text-white/90 sm:text-lg leading-relaxed font-light">
+            Jauki ramybės erdvė pačiame mieste. Masažus atlieka patyrusi meistrė Kristina Jasevičiūtė,
+            skirianti gilų individualų dėmesį jūsų kūno savijautai.
+          </p>
+
+          <div className="mt-8 flex flex-wrap items-center gap-3">
+            <a
+              href="#paslaugos"
+              className="bg-accent px-7 py-3.5 text-xs tracking-[0.15em] text-accent-foreground uppercase font-semibold hover:bg-accent/90 transition-all"
+            >
+              Rezervuoti vizitą
+            </a>
+            <a
+              href="#kuponai"
+              className="border border-white/70 px-7 py-3.5 text-xs tracking-[0.15em] text-white uppercase font-semibold hover:bg-white/10 transition-all"
+            >
+              Dovanų kuponai
+            </a>
+            <a
+              href="#masazai"
+              className="px-4 py-3.5 text-xs tracking-[0.15em] text-white/80 uppercase hover:text-white transition-all underline underline-offset-4"
+            >
+              Masažų sąrašas ↓
+            </a>
+          </div>
+
+          <div className="mt-8 inline-flex items-center gap-2 border border-white/30 bg-black/20 px-4 py-2 text-xs tracking-[0.12em] text-white uppercase backdrop-blur-xs">
+            <Star className="size-3.5 fill-current text-accent" />
+            ★ {STUDIO.rating} įvertinimas · Treatwell (178 atsiliepimai)
+          </div>
+        </div>
+      </section>
+
+      {/* Trust bar */}
+      <div className="relative z-10 mx-auto -mt-10 max-w-5xl px-5 sm:-mt-12 lg:px-8">
+        <div className="border border-border/80 bg-card px-6 py-5 shadow-xs sm:px-8">
+          <div className="flex flex-col gap-4 text-xs tracking-[0.12em] text-foreground/75 uppercase sm:flex-row sm:items-center sm:justify-between sm:gap-0 font-medium">
+            <span className="inline-flex items-center gap-2.5">
+              <Star className="size-4 shrink-0 fill-current text-accent" />★ {STUDIO.rating}{" "}
+              įvertinimas
+            </span>
+            <span aria-hidden className="hidden h-8 w-px bg-border sm:block" />
+            <span className="inline-flex items-center gap-2.5">
+              <Sparkles className="size-4 shrink-0 text-accent" />
+              {STUDIO.reviewCount} atsiliepimai
+            </span>
+            <span aria-hidden className="hidden h-8 w-px bg-border sm:block" />
+            <span className="inline-flex min-w-0 items-center gap-2.5">
+              <MapPin className="size-4 shrink-0 text-accent" />
+              <span className="normal-case">{STUDIO.address}</span>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      {/* Treatments List (All 8 requested) */}
+      <section id="masazai" className="scroll-mt-24 bg-background py-20 sm:py-28">
+        <div className="mx-auto max-w-6xl px-5 lg:px-8">
+          <SectionHeading
+            overline="Paslaugų meniu"
+            ornament="01"
+            title={
+              <>
+                Atliekami <em className="font-heading italic text-accent">masažai</em>
+              </>
+            }
+            intro="Kiekvienas masažas atliekamas su profesionaliu dėmesiu žmogaus kūnui, parinktas pagal jūsų poreikį ir siekiamą rezultatą."
+          />
+
+          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {TREATMENTS.map((item, i) => (
+              <Reveal key={item.id} delay={i * 50} className="h-full">
+                <article className="flex h-full flex-col border border-border/80 bg-card p-6 transition-all duration-300 hover:border-foreground/40 hover:shadow-xs">
+                  <div className="flex items-start justify-between gap-2 border-b border-border/50 pb-4">
+                    <span className="text-[0.68rem] tracking-[0.15em] text-accent uppercase font-bold">
+                      {item.duration}
+                    </span>
+                    <span className="text-xs font-bold text-foreground bg-secondary px-2.5 py-1">
+                      {item.price}
+                    </span>
+                  </div>
+
+                  <h3 className="mt-4 font-heading text-xl text-foreground font-semibold">
+                    {item.title}
+                  </h3>
+
+                  <div className="mt-4 space-y-3 flex-1 text-sm text-foreground/80 leading-relaxed">
+                    <div>
+                      <p className="text-[0.68rem] tracking-[0.12em] uppercase font-bold text-foreground/50">Kam skirtas:</p>
+                      <p className="mt-1">{item.forWhom}</p>
+                    </div>
+                    <div>
+                      <p className="text-[0.68rem] tracking-[0.12em] uppercase font-bold text-accent">Pojūtis:</p>
+                      <p className="mt-1 italic text-foreground/75 font-serif">{item.feeling}</p>
+                    </div>
+                  </div>
+
+                  <div className="mt-6 pt-4 border-t border-border/50 flex items-center justify-between gap-2">
+                    <a
+                      href="#paslaugos"
+                      className="text-xs tracking-[0.12em] uppercase font-semibold text-foreground underline underline-offset-4 hover:text-accent transition-colors"
+                    >
+                      Rezervuoti
+                    </a>
+                    <a
+                      href="#kuponai"
+                      className="text-xs tracking-[0.12em] uppercase text-accent font-semibold hover:text-foreground transition-colors"
+                    >
+                      Kuponas →
+                    </a>
+                  </div>
+                </article>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* About Specialist Kristina (Expanded based on feedback) */}
+      <section id="apie" className="scroll-mt-24 bg-card py-20 sm:py-28 border-y border-border/60">
+        <div className="mx-auto grid max-w-6xl items-center gap-12 px-5 lg:grid-cols-12 lg:px-8">
+          <div className="lg:col-span-7">
+            <SectionHeading
+              overline="Apie meistrę"
+              ornament="✦"
+              title={
+                <>
+                  Dėmesys žmogaus kūnui,{" "}
+                  <em className="font-heading italic text-accent font-normal">žinios ir ramybė</em>
+                </>
+              }
+            />
+            <Reveal delay={80}>
+              <div className="mt-6 space-y-4 text-base leading-relaxed text-foreground/85">
+                <p className="font-serif text-lg italic text-foreground/90 border-l-2 border-accent pl-4">
+                  „Mano tikslas yra ne tiesiog atlikti procedūrą pagal standartinį protokolą, o pajusti žmogaus kūną,
+                  parinkti darbą pagal esamą būklę ir padėti atgauti prarastą pusiausvyrą.“
+                </p>
+                <p>
+                  Masažus atlieka patyrusi specialistė <strong>Kristina Jasevičiūtė</strong>. Nuolat gilinuosi į žmogaus
+                  anatomiją, fascijas bei kūno biomechaniką, todėl kiekvienas seansas prasideda nuo jūsų savijautos išklausymo.
+                </p>
+                <p>
+                  Valdau įvairias masažo technikas: nuo intensyvaus sportinio ir giliojo audinių darbo iki švelnaus
+                  limfodrenažo bei giliai atpalaiduojančio havajietiško Lomi Lomi Nui. Tai leidžia pritaikyti sprendimą
+                  būtent tam, ko jūsų kūnui labiausiai reikia šią dieną.
+                </p>
+              </div>
+
+              {/* Guiding Principles */}
+              <div className="mt-8 border-t border-border/60 pt-6">
+                <p className="text-xs tracking-[0.15em] text-foreground/60 uppercase font-semibold mb-4">
+                  Meistrės vertybės ir darbo principai:
+                </p>
+                <div className="grid sm:grid-cols-2 gap-3">
+                  {PRINCIPLES.map((p) => (
+                    <div key={p.title} className="flex items-start gap-2.5">
+                      <Check className="size-4 shrink-0 text-accent mt-1" />
+                      <div>
+                        <strong className="text-sm font-semibold text-foreground">{p.title}:</strong>
+                        <span className="text-xs text-foreground/75 ml-1">{p.desc}</span>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div className="mt-8 flex flex-wrap gap-4">
+                <a
+                  href="#kuponai"
+                  className="bg-foreground text-background px-7 py-3.5 text-xs tracking-[0.15em] uppercase font-semibold hover:bg-foreground/90 transition-all"
+                >
+                  Užsakyti dovanų kuponą
+                </a>
+                <a
+                  href="#paslaugos"
+                  className="border border-border/80 bg-background px-7 py-3.5 text-xs tracking-[0.15em] uppercase font-semibold text-foreground hover:bg-secondary transition-all"
+                >
+                  Rezervuoti vizitą internetu
+                </a>
+              </div>
+            </Reveal>
+          </div>
+
+          <div className="lg:col-span-5">
+            <Reveal delay={120}>
+              <div className="border border-border/80 p-2 bg-background shadow-xs">
+                <div className="relative overflow-hidden aspect-[3/4]">
+                  <SmartImage
+                    src={PHOTOS[1]!}
+                    fallback={FALLBACK_PHOTOS[1]!}
+                    alt="Masažų meistrė Kristina atlieka procedūrą"
+                    className="size-full object-cover grayscale-[15%] contrast-[1.05]"
+                  />
+                  <div className="absolute bottom-0 inset-x-0 bg-linear-to-t from-black/80 via-black/40 to-transparent p-6 text-white">
+                    <p className="text-xs tracking-[0.15em] uppercase text-accent font-semibold">Specialistė</p>
+                    <p className="font-heading text-xl font-medium">Kristina Jasevičiūtė</p>
+                    <p className="text-xs text-white/80 mt-1">Kūno terapijos ir masažų praktika Klaipėdoje</p>
+                  </div>
+                </div>
+              </div>
+            </Reveal>
+          </div>
+        </div>
+      </section>
+
+      {/* Gift Vouchers & Direct Reservation */}
+      <VoucherSection />
+
+      {/* Treatwell Online Booking */}
+      <Booking />
+
+      {/* Gallery */}
+      <Gallery />
+
+      {/* Reviews */}
+      <Reviews />
+
+      {/* Contact & Map */}
+      <Contact />
+    </div>
+  );
+}
