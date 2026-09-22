@@ -22,7 +22,7 @@ export function SectionHeading({
       {ornament && (
         <span
           aria-hidden
-          className="pointer-events-none absolute -top-8 -left-3 sm:-top-12 sm:-left-6 font-heading text-8xl sm:text-[10rem] font-extralight tracking-tighter text-foreground/[0.04] select-none leading-none z-0"
+          className="pointer-events-none absolute -top-8 left-0 sm:-top-12 sm:left-1 font-heading text-8xl sm:text-[10rem] font-extralight tracking-tighter text-foreground/[0.04] select-none leading-none z-0"
         >
           {ornament}
         </span>

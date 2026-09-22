@@ -65,7 +65,7 @@ export function VoucherSection() {
       <div className="mx-auto max-w-6xl px-5 lg:px-8">
         <div className="grid gap-12 lg:grid-cols-12 items-start">
           {/* Left Column: Heading + Concierge Guide */}
-          <div className="lg:col-span-5 lg:sticky lg:top-28">
+          <div className="lg:col-span-5 xl:col-span-5 lg:sticky lg:top-28">
             <SectionHeading
               overline="Tiesioginis užsakymas"
               ornament="03"
@@ -365,38 +365,38 @@ export function VoucherSection() {
                   </div>
                 </div>
 
-                <div className="pt-2 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div className="pt-4 flex flex-col xl:flex-row xl:items-center justify-between gap-4">
                   <button
                     type="submit"
                     disabled={loading}
-                    className="w-full sm:w-auto rounded-full bg-foreground text-background px-9 py-4 text-xs font-semibold tracking-[0.12em] uppercase hover:bg-foreground/90 transition-all disabled:opacity-50 flex items-center justify-center gap-2 shadow-xs whitespace-nowrap"
+                    className="w-full xl:w-auto rounded-full bg-foreground text-background px-8 py-3.5 text-xs font-semibold tracking-[0.12em] uppercase hover:bg-foreground/90 transition-all disabled:opacity-50 flex items-center justify-center gap-2 shadow-xs shrink-0"
                   >
                     {loading ? (
                       "Siunčiama..."
                     ) : (
                       <>
-                        <Send className="size-4" />
-                        {tab === "booking" ? "Pateikti tiesioginę registraciją" : "Užsakyti dovanų kuponą"}
+                        <Send className="size-4 shrink-0" />
+                        <span>{tab === "booking" ? "Pateikti tiesioginę registraciją" : "Užsakyti dovanų kuponą"}</span>
                       </>
                     )}
                   </button>
-                  <p className="text-xs text-foreground/60 text-center sm:text-right flex items-center gap-1.5 whitespace-nowrap">
-                    <ShieldCheck className="size-3.5 text-accent" />
-                    Tiesioginis susitarimas · Be papildomų mokesčių
+                  <p className="text-xs text-foreground/60 flex items-center gap-1.5 self-start xl:self-auto">
+                    <ShieldCheck className="size-3.5 text-accent shrink-0" />
+                    <span>Tiesioginis susitarimas · Be papildomų mokesčių</span>
                   </p>
                 </div>
               </form>
             )}
 
             {/* Subtle Treatwell Alternative Note */}
-            <div className="mt-8 border-t border-border/60 pt-6 flex flex-wrap items-center justify-center sm:justify-between gap-y-2 gap-x-4 text-xs text-foreground/75">
-              <span className="inline-flex items-center gap-2 whitespace-nowrap">
+            <div className="mt-8 border-t border-border/60 pt-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 text-xs text-foreground/75">
+              <span className="inline-flex items-center gap-2">
                 <span className="size-2 rounded-full bg-emerald-500 inline-block shrink-0" />
-                Registraciją patvirtina meistrė Kristina Jasevičiūtė
+                <span>Registraciją patvirtina meistrė Kristina Jasevičiūtė</span>
               </span>
               <a
                 href="#treatwell"
-                className="hover:text-foreground underline underline-offset-4 text-accent transition-colors inline-flex items-center gap-1 whitespace-nowrap font-medium"
+                className="hover:text-foreground underline underline-offset-4 text-accent transition-colors inline-flex items-center gap-1 font-medium self-start sm:self-auto"
               >
                 Rezervacija per Treatwell programėlę ↓
               </a>

@@ -106,20 +106,22 @@ function Index() {
       </section>
 
       {/* Architectural Trust Strip */}
-      <div className="relative z-10 border-y border-border/80 bg-card py-5">
+      <div className="relative z-10 border-y border-border/80 bg-card py-4 sm:py-5">
         <div className="mx-auto max-w-6xl px-5 lg:px-8">
-          <div className="grid grid-cols-1 sm:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x divide-border/60 text-xs tracking-[0.08em] uppercase text-foreground/85 font-medium">
-            <div className="flex items-center justify-center gap-2.5 py-2.5 sm:py-0 sm:px-6">
+          <div className="flex flex-col md:flex-row items-center justify-around gap-y-3.5 gap-x-8 text-xs tracking-[0.08em] uppercase text-foreground/85 font-medium text-center md:text-left">
+            <div className="flex items-center gap-2.5 py-1">
               <Star className="size-4 shrink-0 fill-current text-accent" />
-              <span className="whitespace-nowrap"><strong className="text-foreground">★ {STUDIO.rating}</strong> įvertinimas · Treatwell</span>
+              <span><strong className="text-foreground">★ {STUDIO.rating}</strong> įvertinimas · Treatwell</span>
             </div>
-            <div className="flex items-center justify-center gap-2.5 py-2.5 sm:py-0 sm:px-6">
+            <span aria-hidden className="hidden md:block h-4 w-px bg-border/80 shrink-0" />
+            <div className="flex items-center gap-2.5 py-1">
               <Sparkles className="size-4 shrink-0 text-accent" />
-              <span className="whitespace-nowrap"><strong className="text-foreground">{STUDIO.reviewCount}</strong> klientų atsiliepimai</span>
+              <span><strong className="text-foreground">{STUDIO.reviewCount}</strong> klientų atsiliepimai</span>
             </div>
-            <div className="flex items-center justify-center gap-2.5 py-2.5 sm:py-0 sm:px-6">
+            <span aria-hidden className="hidden md:block h-4 w-px bg-border/80 shrink-0" />
+            <div className="flex items-center gap-2.5 py-1">
               <MapPin className="size-4 shrink-0 text-accent" />
-              <span className="whitespace-nowrap normal-case font-semibold text-foreground">{STUDIO.address}</span>
+              <span className="normal-case font-semibold text-foreground">{STUDIO.address}</span>
             </div>
           </div>
         </div>
@@ -139,15 +141,15 @@ function Index() {
             intro="Kiekvienas masažas atliekamas su profesionaliu dėmesiu žmogaus kūnui, parinktas pagal jūsų poreikį ir siekiamą rezultatą."
           />
 
-          <div className="mt-12 grid gap-x-14 gap-y-0 lg:grid-cols-2">
+          <div className="mt-12 grid gap-x-16 gap-y-0 lg:grid-cols-2">
             {TREATMENTS.map((item, i) => (
               <Reveal key={item.id} delay={i * 40}>
-                <article className="group border-b border-border/70 py-7 transition-colors hover:border-accent/80">
-                  <div className="flex items-baseline justify-between gap-4">
+                <article className="group border-b border-border/70 py-8 sm:py-9 transition-colors hover:border-accent/80">
+                  <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1.5">
                     <h3 className="font-heading text-xl sm:text-2xl text-foreground font-medium group-hover:text-accent transition-colors">
                       {item.title}
                     </h3>
-                    <div className="flex items-baseline gap-2 shrink-0">
+                    <div className="flex items-baseline gap-2.5 shrink-0">
                       <span className="text-xs font-mono text-foreground/60 tracking-wider">
                         {item.duration}
                       </span>
@@ -157,7 +159,7 @@ function Index() {
                     </div>
                   </div>
 
-                  <div className="mt-3 space-y-1.5 text-sm text-foreground/80 leading-relaxed">
+                  <div className="mt-3.5 space-y-2 text-sm text-foreground/80 leading-relaxed">
                     <p>
                       <span className="text-xs font-semibold uppercase tracking-wider text-foreground/50 mr-2">Kam tinka:</span>
                       {item.forWhom}

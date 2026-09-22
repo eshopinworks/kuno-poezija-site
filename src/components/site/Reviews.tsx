@@ -68,8 +68,8 @@ export function Reviews() {
           <div className="lg:col-span-7 divide-y divide-border/60">
             {rest.map((review, i) => (
               <Reveal key={review.name} delay={60 * (i + 1)}>
-                <article className="py-6 first:pt-0 last:pb-0">
-                  <div className="flex items-center justify-between gap-3 mb-2.5">
+                <article className="py-7 first:pt-0 last:pb-0">
+                  <div className="flex items-center justify-between gap-3 mb-3">
                     <div className="flex items-center gap-3">
                       <Avatar name={review.name} />
                       <div>
@@ -81,7 +81,7 @@ export function Reviews() {
                     </div>
                     <Stars />
                   </div>
-                  <blockquote className="mt-2 text-sm leading-relaxed text-foreground/80 pl-11">
+                  <blockquote className="mt-2 text-sm leading-relaxed text-foreground/80 pl-0 sm:pl-11">
                     "{review.text}"
                   </blockquote>
                 </article>
